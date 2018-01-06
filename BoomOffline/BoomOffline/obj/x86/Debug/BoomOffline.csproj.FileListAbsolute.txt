@@ -1,0 +1,14 @@
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_1.xnb
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\button_container.xnb
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\menu_background.xnb
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\BoomOffline.exe
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\BoomOffline.pdb
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\obj\x86\Debug\BoomOffline.csprojResolveAssemblyReference.cache
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\obj\x86\Debug\BoomOffline.exe
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\obj\x86\Debug\BoomOffline.pdb
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_2.xnb
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\character_1.xnb
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\bomb.xnb
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\explosion.xnb
+E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\character_2.xnb
