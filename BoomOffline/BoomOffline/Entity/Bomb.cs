@@ -21,7 +21,10 @@ namespace BoomOffline.Entity
             End
         }
 
+
+        private Point[] explosionLogicArea;
         private BombState state;
+        private int i, j;
         private Rectangle rect;
         private Texture2D texture;
 
@@ -44,8 +47,11 @@ namespace BoomOffline.Entity
         private Rectangle topLimit;
         private Rectangle bottomLimit;
 
-        public Bomb(Rectangle rect, Rectangle leftLimit, Rectangle rightLimit, Rectangle topLimit, Rectangle bottomLimit)
+        public Bomb(int i, int j, Rectangle rect, Rectangle leftLimit, Rectangle rightLimit, Rectangle topLimit, Rectangle bottomLimit, Point[] explosionLogicArea)
         {
+            this.ExplosionArea = explosionLogicArea;
+            this.i = i;
+            this.j = j;
             canExplosionToTop = canExplosionToBottom = canExplosionToLeft = canExplosionToRight = true;
             explosionArea = new List<Rectangle>();
             var unit = Global.Instance.GameUnit;
@@ -71,6 +77,24 @@ namespace BoomOffline.Entity
         public BombState State
         {
             get { return state; }
+        }
+
+        public int I
+        {
+            get { return i; }
+            set { i = value; }
+        }
+
+        public int J
+        {
+            get { return j; }
+            set { j = value; }
+        }
+
+        public Point[] ExplosionArea
+        {
+            get { return explosionLogicArea; }
+            set { explosionLogicArea = value; }
         }
 
         public bool IsDeathByBomb(Rectangle rect)

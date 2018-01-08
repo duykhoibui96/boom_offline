@@ -23,6 +23,12 @@ namespace BoomOffline.Helper
             get { return map; }
         }
 
+        public int[][] LogicMap
+        {
+            get { return logicMap; }
+            set { logicMap = value; }
+        }
+
         public Point GetRealPosition(int i, int j)
         {
             return map[i, j].Rect.Location;
@@ -38,14 +44,14 @@ namespace BoomOffline.Helper
                 grid.Add(tokens.Select(token => Int32.Parse(token)).ToArray());
             }
 
-            logicMap = grid.ToArray();
+            LogicMap = grid.ToArray();
 
         }
 
         public void GenerateMap(int startX, int startY)
         {
             GenerateLogicMap("map01.txt");
-            map = new BasicEntity[logicMap.Length, logicMap[0].Length];
+            map = new BasicEntity[LogicMap.Length, LogicMap[0].Length];
             var unit = Global.Instance.GameUnit;
             int startMapX = 25;
             int startMapY = 25;
@@ -55,12 +61,12 @@ namespace BoomOffline.Helper
             Texture2D empty = new Texture2D(Global.Instance.Graphics, 1, 1);
             obstacle.SetData(new Color[] { Color.Green });
 
-            for (int i = 0; i < logicMap.Length; i++)
+            for (int i = 0; i < LogicMap.Length; i++)
             {
-                for (int j = 0; j < logicMap[i].Length; j++)
+                for (int j = 0; j < LogicMap[i].Length; j++)
                 {
                     map[i, j] = new BasicEntity();
-                    map[i, j].Load(logicMap[i][j] == TYPE_OBSTACLE ? obstacle : empty, new Rectangle(startMapX + unit * j, startMapY + unit * i, unit, unit), Color.White);
+                    map[i, j].Load(LogicMap[i][j] == TYPE_OBSTACLE ? obstacle : empty, new Rectangle(startMapX + unit * j, startMapY + unit * i, unit, unit), Color.White);
                 }
             }
 
@@ -68,7 +74,7 @@ namespace BoomOffline.Helper
 
         public bool IsValidLocation(int i, int j)
         {
-            return logicMap[i][j] == TYPE_EMPTY;
+            return LogicMap[i][j] == TYPE_EMPTY;
         }
 
     }

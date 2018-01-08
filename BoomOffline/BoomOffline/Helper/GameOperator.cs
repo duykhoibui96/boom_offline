@@ -51,7 +51,7 @@ namespace BoomOffline.Helper
         {
             mapGenerator.GenerateMap(25, 25);
             player.Load(0, mapGenerator.Map[1, 1].Rect, 1, 1);
-            bot.Load(1, mapGenerator.Map[1, 19].Rect, 1, 19);
+            bot.Load(1, mapGenerator.Map[19, 19].Rect, 19, 19);
         }
 
         public void Update(GameTime gameTime)
@@ -59,19 +59,20 @@ namespace BoomOffline.Helper
             CheckPlayerMoving(player); //Kiểm tra xem nhân vật có lệnh di chuyển hay không
             CheckSetBomb(player); //Kiểm tra xem nhân vật có lệnh đặt bom hay không
 
+            CheckPlayerMoving(bot, true);
 
             foreach (var bomb in bombs) //Cập nhật trạng thái của quả bom
             {
                 bomb.Update(gameTime);
             }
-            
+
 
             if (player.IsAlive)
             {
                 foreach (var bomb in bombs) // Kiểm tra xem bom có nổ chết thằng nào ko
                 {
                     if (bomb.State == Bomb.BombState.Explosion)
-                    {    
+                    {
                         if (bot.IsAlive && bomb.IsDeathByBomb(bot.CurRect))
                         {
                             bot.IsAlive = false;
@@ -81,7 +82,7 @@ namespace BoomOffline.Helper
                             player.IsAlive = false;
                         }
                     }
-                   
+
                 }
             }
 
@@ -93,7 +94,7 @@ namespace BoomOffline.Helper
 
         private void CheckPlayerMoving(Character character, bool isBot = false)
         {
-            if (player.IsAlive && !player.IsMoving) //Nếu nhân vật đang trong quá trình di chuyển ( 1 lần 1 ô ) thì sẽ skip các lệnh di chuyển
+            if (character.IsAlive && !character.IsMoving) //Nếu nhân vật đang trong quá trình di chuyển ( 1 lần 1 ô ) thì sẽ skip các lệnh di chuyển
             {
                 var keyboard = KeyboardEvent.Instance;
                 int movementIndex = Character.IDLE; //Hướng di chuyển của nhân vật (mặc định là đứng yên)
@@ -128,11 +129,13 @@ namespace BoomOffline.Helper
                 else //Đây là bot
                 {
                     // AI điều khiển hướng di chuyển ở đây, cập nhật 2 tham số movementIndex và characterI, characterJ tương tự trên
+                    characterI--;
+                    movementIndex = Character.MOVE_UP;
                 }
 
 
 
-                if (movementIndex != -1 && mapGenerator.IsValidLocation(characterI, characterJ)) //Nếu nhân vật có lệnh di chuyển và vị trí mới hợp lệ
+                if (movementIndex != -1 && mapGenerator.IsValidLocation(characterI, characterJ) && !bombs.Any(bomb => bomb.I == characterI && bomb.J == characterJ)) //Nếu nhân vật có lệnh di chuyển và vị trí mới hợp lệ
                 {
                     character.Move(movementIndex); //Di chuyển nhân vật
                 }
@@ -153,6 +156,8 @@ namespace BoomOffline.Helper
                 var rightLimit = Rectangle.Empty;
                 var topLimit = Rectangle.Empty;
                 var bottomLimit = Rectangle.Empty;
+
+                var explosionArea = new List<Point>();
                 //---------------------------------------------------------------------------------------
 
 
@@ -164,6 +169,10 @@ namespace BoomOffline.Helper
                         bottomLimit = Map[i, currentCoordJ].Rect;
                         break;
                     }
+                    else
+                    {
+                        explosionArea.Add(new Point(i, currentCoordJ));
+                    }
                 }
                 for (int i = currentCoordI; i >= 0; i--)
                 {
@@ -171,6 +180,10 @@ namespace BoomOffline.Helper
                     {
                         topLimit = Map[i, currentCoordJ].Rect;
                         break;
+                    }
+                    else
+                    {
+                        explosionArea.Add(new Point(i, currentCoordJ));
                     }
                 }
                 for (int j = currentCoordJ; j < Map.GetLength(1); j++)
@@ -180,6 +193,10 @@ namespace BoomOffline.Helper
                         rightLimit = Map[currentCoordI, j].Rect;
                         break;
                     }
+                    else
+                    {
+                        explosionArea.Add(new Point(currentCoordI, j));
+                    }
                 }
                 for (int j = currentCoordJ; j >= 0; j--)
                 {
@@ -188,12 +205,17 @@ namespace BoomOffline.Helper
                         leftLimit = Map[currentCoordI, j].Rect;
                         break;
                     }
+                    else
+                    {
+                        explosionArea.Add(new Point(currentCoordI, j));
+                    }
                 }
                 //------------------------------------------------------------------------------
 
-
+                
+                
                 //Thêm bom mới
-                bombs.Add(new Bomb(Map[currentCoordI, currentCoordJ].Rect, leftLimit, rightLimit, topLimit, bottomLimit));
+                bombs.Add(new Bomb(currentCoordI, currentCoordJ, Map[currentCoordI, currentCoordJ].Rect, leftLimit, rightLimit, topLimit, bottomLimit, explosionArea.ToArray()));
             }
         }
 
