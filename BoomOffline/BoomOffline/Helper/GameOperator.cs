@@ -98,7 +98,7 @@ namespace BoomOffline.Helper
                     {
                         bots.ForEach(bot =>
                         {
-                            if (bomb.IsInExplosionArea(bot.CurRect)) //Bot bị dính bom
+                            if (bot.IsAlive && bomb.IsInExplosionArea(bot.CurRect)) //Bot bị dính bom
                             {
                                 bot.IsAlive = false; //Bắt đầu hấp hối
                             }
