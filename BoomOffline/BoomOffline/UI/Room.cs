@@ -209,8 +209,8 @@ namespace BoomOffline.UI
             else if (mouseEvent.IsHover(increaseNumOfBots.Rect) && isLeftClick)
             {
                 numOfBots++;
-                if (numOfBots == 4)
-                    numOfBots = 3;
+                if (numOfBots == 7)
+                    numOfBots = 6;
                 numOfBotsEntity.Text = numOfBots.ToString();
                 RoomSetting.Instance.NumOfBot = numOfBots;
             }

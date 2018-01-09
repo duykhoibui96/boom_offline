@@ -6,3 +6,15 @@ Content\character_1.xnb
 Content\bomb.xnb
 Content\explosion.xnb
 Content\character_2.xnb
+Content\character_3.xnb
+Content\character_4.xnb
+Content\left_arrow.xnb
+Content\map.xnb
+Content\right_arrow.xnb
+Content\map_01.xnb
+Content\map_02.xnb
+Content\map_03.xnb
+Content\map_04.xnb
+Content\minus.xnb
+Content\plus.xnb
+Content\room_background.xnb

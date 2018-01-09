@@ -49,17 +49,30 @@ namespace BoomOffline.Helper
 
         public void Init()
         {
+            Random rand = new Random();
+            int w, h, type;
             mapGenerator.GenerateMap(25, 25);
             player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[1, 1].Rect, 1, 1);
+            int divide = RoomSetting.Instance.MapSize / RoomSetting.Instance.NumOfBot;
 
             //Đọc dữ liệu từ UserSetting.Instance.NumOfBots để biết số con bot
-            
-            //bots.Add(new Character());
-            //bots[0].Load(1, mapGenerator.Map[19, 19].Rect, 19, 19);
-            //bots.Add(new Character());
-            //bots[1].Load(2, mapGenerator.Map[19, 1].Rect, 19, 1);
-            //bots.Add(new Character());
-            //bots[2].Load(3, mapGenerator.Map[1, 19].Rect, 1, 19);
+            for (int i = 0; i < RoomSetting.Instance.NumOfBot; i++)
+            {
+                //random position
+                do
+                {
+                    w = rand.Next(3, RoomSetting.Instance.MapSize - 3);
+                    h = rand.Next(divide * i, divide * i + divide);
+                } while (!mapGenerator.IsValidLocation(h, w));
+
+                do
+                {
+                    type = rand.Next(0, 3);
+                } while (type == RoomSetting.Instance.PlayerType);
+
+                bots.Add(new Character());
+                bots[i].Load(type, mapGenerator.Map[h, w].Rect, h, w);
+            }
         }
 
         public void Update(GameTime gameTime)
