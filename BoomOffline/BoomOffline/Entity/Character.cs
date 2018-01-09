@@ -33,6 +33,7 @@ namespace BoomOffline.Entity
         private int elapsedTime;
 
         private int i, j;
+        private int newI, newJ;
 
         public bool IsMoving
         {
@@ -72,6 +73,18 @@ namespace BoomOffline.Entity
             }
         }
 
+        public int NewI
+        {
+            get { return newI; }
+            set { newI = value; }
+        }
+
+        public int NewJ
+        {
+            get { return newJ; }
+            set { newJ = value; }
+        }
+
         public Character()
         {
             sprites = new AnimationSprite[]
@@ -93,8 +106,8 @@ namespace BoomOffline.Entity
             isAlive = true;
             this.curRect = rect;
             currentSprite = 1;
-            this.i = i;
-            this.j = j;
+            this.i = this.newI = i;
+            this.j = this.newJ = j;
             var characterSprite = playerType == 0 ? ResManager.Instance.Character_1 : ResManager.Instance.Character_2;
             sprite = characterSprite;
             int frameWidth = characterSprite.Width / 3;
@@ -118,15 +131,19 @@ namespace BoomOffline.Entity
             {
                 case MOVE_UP:
                     newRect.Offset(0, -unit);
+                    newI = i - 1;
                     break;
                 case MOVE_DOWN:
                     newRect.Offset(0, unit);
+                    newI = i + 1;
                     break;
                 case MOVE_LEFT:
                     newRect.Offset(-unit, 0);
+                    newJ = j - 1;
                     break;
                 case MOVE_RIGHT:
                     newRect.Offset(unit, 0);
+                    newJ = j + 1;
                     break;
             }
             isMoving = true;
@@ -166,21 +183,8 @@ namespace BoomOffline.Entity
                     else
                     {
                         isMoving = false;
-                        switch (currentSprite)
-                        {
-                            case MOVE_UP:
-                                i--;
-                                break;
-                            case MOVE_DOWN:
-                                i++;
-                                break;
-                            case MOVE_LEFT:
-                                j--;
-                                break;
-                            case MOVE_RIGHT:
-                                j++;
-                                break;
-                        }
+                        i = newI;
+                        j = newJ;
                     }
 
                 }

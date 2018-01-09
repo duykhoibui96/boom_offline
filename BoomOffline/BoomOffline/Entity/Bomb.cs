@@ -61,7 +61,7 @@ namespace BoomOffline.Entity
             explosionLevel = 1;
             countDownTime = 3000;
             this.state = BombState.CountDown;
-            this.rect = rect;
+            this.Rect = rect;
             this.leftLimit = leftLimit;
             this.rightLimit = rightLimit;
             this.topLimit = topLimit;
@@ -70,13 +70,24 @@ namespace BoomOffline.Entity
             sprite = new AnimationSprite();
             sprite.Load(this.texture, this.texture.Width / 8, this.texture.Height, 8, 0);
 
-            
+
 
         }
 
         public BombState State
         {
             get { return state; }
+            set
+            {
+                this.state = value;
+                if (value == BombState.Explosion)
+                {
+                    countDownTime = 0;
+                    elapsedGameTime = 0;
+                    state = BombState.Explosion;
+                    Explose();
+                }
+            }
         }
 
         public int I
@@ -97,9 +108,15 @@ namespace BoomOffline.Entity
             set { explosionLogicArea = value; }
         }
 
-        public bool IsDeathByBomb(Rectangle rect)
+        public Rectangle Rect
         {
-            return rect.Equals(this.rect) || explosionArea.Any(explosion => explosion.Equals(rect));
+            get { return rect; }
+            set { rect = value; }
+        }
+
+        public bool IsInExplosionArea(Rectangle rect)
+        {
+            return rect.Intersects(this.Rect) || explosionArea.Any(explosion => explosion.Intersects(rect));
         }
 
         public void Update(GameTime gameTime)
@@ -148,7 +165,7 @@ namespace BoomOffline.Entity
             var explosionOffset = unit / 2;
             if (canExplosionToRight)
             {
-                var newExplosion = rect;
+                var newExplosion = Rect;
                 newExplosion.Offset(explosionLevel * explosionOffset, 0);
                 if (!newExplosion.Intersects(rightLimit))
                     explosionArea.Add(newExplosion);
@@ -157,7 +174,7 @@ namespace BoomOffline.Entity
             }
             if (canExplosionToLeft)
             {
-                var newExplosion = rect;
+                var newExplosion = Rect;
                 newExplosion.Offset(-explosionLevel * explosionOffset, 0);
                 if (!newExplosion.Intersects(leftLimit))
                     explosionArea.Add(newExplosion);
@@ -166,7 +183,7 @@ namespace BoomOffline.Entity
             }
             if (canExplosionToTop)
             {
-                var newExplosion = rect;
+                var newExplosion = Rect;
                 newExplosion.Offset(0, -explosionLevel * explosionOffset);
                 if (!newExplosion.Intersects(topLimit))
                     explosionArea.Add(newExplosion);
@@ -175,7 +192,7 @@ namespace BoomOffline.Entity
             }
             if (canExplosionToBottom)
             {
-                var newExplosion = rect;
+                var newExplosion = Rect;
                 newExplosion.Offset(0, explosionLevel * explosionOffset);
                 if (!newExplosion.Intersects(bottomLimit))
                     explosionArea.Add(newExplosion);
@@ -189,10 +206,10 @@ namespace BoomOffline.Entity
             switch (state)
             {
                 case BombState.CountDown:
-                    spriteBatch.Draw(texture, rect, sprite.Frame, Color.White);
+                    spriteBatch.Draw(texture, Rect, sprite.Frame, Color.White);
                     break;
                 case BombState.Explosion:
-                    spriteBatch.Draw(explosionTexture, rect, Color.White);
+                    spriteBatch.Draw(explosionTexture, Rect, Color.White);
                     foreach (var explosionGameUnit in explosionArea)
                     {
                         spriteBatch.Draw(explosionTexture, explosionGameUnit, Color.White);
