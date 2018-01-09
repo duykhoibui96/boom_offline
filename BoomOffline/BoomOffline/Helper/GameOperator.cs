@@ -16,7 +16,7 @@ namespace BoomOffline.Helper
         private Character player;
         private List<Bomb> bombs;
 
-        private List<Character> bots; // Tạm thời 1 con trước đi
+        private List<Character> bots;
 
         public BasicEntity[,] Map
         {
@@ -96,13 +96,13 @@ namespace BoomOffline.Helper
                 {
                     if (bomb.State == Bomb.BombState.Explosion)
                     {
-                        for (int i = 0; i < bots.Count; i++ )
-                            if (bots[i].IsAlive && bomb.IsInExplosionArea(bots[i].CurRect))
+                        bots.ForEach(bot =>
+                        {
+                            if (bomb.IsInExplosionArea(bot.CurRect)) //Bot bị dính bom
                             {
-                                bots[i].IsAlive = false;
-                                bots.Remove(bots[i]);
-                                i--;
+                                bot.IsAlive = false; //Bắt đầu hấp hối
                             }
+                        });
                         if (player.IsAlive && bomb.IsInExplosionArea(player.CurRect))
                         {
                             player.IsAlive = false;
@@ -113,8 +113,21 @@ namespace BoomOffline.Helper
             }
 
             player.Update(gameTime);//Cập nhật trạng thái nhân vật
+            var removeBots = new List<Character>(); //Danh sách hỏa thiêu
             foreach (var b in bots)
+            {
                 b.Update(gameTime); //Cập nhật trạng thái bot
+                if (!b.IsAlive && b.TimeForAgony <= 0) //Hết thời gian hấp hối, cho vào danh sách cần hỏa thiêu
+                {
+                    removeBots.Add(b);
+                }
+            }
+
+            foreach (var removeBot in removeBots) //Hỏa thiêu những thằng đã hấp hối xong
+            {
+                bots.Remove(removeBot);
+            }
+
 
             bombs.Remove(bombs.Find(bomb => bomb.State == Bomb.BombState.End)); //Xóa các quả bom đã nổ
         }
@@ -193,7 +206,7 @@ namespace BoomOffline.Helper
 
         private bool CheckValidBotPosition(Character curBot,int newI, int newJ)
         {
-            return !bots.Any(bot => !bot.Equals(curBot) && bot.NewI == newI && bot.NewJ == newJ);
+            return !bots.Any(bot => !bot.Equals(curBot) && !bot.IsAlive && bot.NewI == newI && bot.NewJ == newJ);
             //return true;
         }
 

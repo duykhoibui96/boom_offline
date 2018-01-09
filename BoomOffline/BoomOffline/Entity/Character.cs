@@ -32,6 +32,8 @@ namespace BoomOffline.Entity
         private int currentSprite;
         private int elapsedTime;
 
+        private int timeForAgony;
+
         private int i, j;
         private int newI, newJ;
 
@@ -85,6 +87,12 @@ namespace BoomOffline.Entity
             set { newJ = value; }
         }
 
+        public int TimeForAgony
+        {
+            get { return timeForAgony; }
+            set { timeForAgony = value; }
+        }
+
         public Character()
         {
             sprites = new AnimationSprite[]
@@ -108,6 +116,7 @@ namespace BoomOffline.Entity
             currentSprite = 1;
             this.i = this.newI = i;
             this.j = this.newJ = j;
+            TimeForAgony = 1000;
             var characterSprite = playerType == 0 ? ResManager.Instance.Character_1 : ResManager.Instance.Character_2;
             sprite = characterSprite;
             int frameWidth = characterSprite.Width / 3;
@@ -197,6 +206,8 @@ namespace BoomOffline.Entity
             else
             {
                 elapsedTime += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timeForAgony > 0)
+                    timeForAgony -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (elapsedTime >= 200)
                 {
                     elapsedTime = 0;
