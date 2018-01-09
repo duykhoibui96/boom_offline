@@ -12,3 +12,17 @@ E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debu
 E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\bomb.xnb
 E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\explosion.xnb
 E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\character_2.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_1.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_2.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\button_container.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\menu_background.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\character_1.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\bomb.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\explosion.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\character_2.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\BoomOffline.exe
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\BoomOffline.pdb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\obj\x86\Debug\BoomOffline.exe
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\obj\x86\Debug\BoomOffline.pdb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\obj\x86\Debug\BoomOffline.csprojResolveAssemblyReference.cache

@@ -206,7 +206,7 @@ namespace BoomOffline.Helper
 
         private bool CheckValidBotPosition(Character curBot,int newI, int newJ)
         {
-            return !bots.Any(bot => !bot.Equals(curBot) && !bot.IsAlive && bot.NewI == newI && bot.NewJ == newJ);
+            return !bots.Any(bot => !bot.Equals(curBot) && bot.IsAlive && bot.NewI == newI && bot.NewJ == newJ);
             //return true;
         }
 

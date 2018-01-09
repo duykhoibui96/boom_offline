@@ -7,26 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_1.xnb</Output>
-      <Time>2017-12-31T15:23:33.9127159+07:00</Time>
-    </Item>
-    <Item>
-      <Source>button_container.png</Source>
-      <Name>button_container</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\button_container.xnb</Output>
-      <Time>2017-12-31T15:16:54.3410087+07:00</Time>
-    </Item>
-    <Item>
-      <Source>menu_background.jpg</Source>
-      <Name>menu_background</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\menu_background.xnb</Output>
-      <Time>2017-12-31T15:09:04.0921291+07:00</Time>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_1.xnb</Output>
+      <Time>2018-01-09T10:45:44.6801937+07:00</Time>
     </Item>
     <Item>
       <Source>font_2.spritefont</Source>
@@ -34,8 +16,26 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_2.xnb</Output>
-      <Time>2017-12-31T15:37:25.0182898+07:00</Time>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_2.xnb</Output>
+      <Time>2018-01-09T10:45:44.6801937+07:00</Time>
+    </Item>
+    <Item>
+      <Source>button_container.png</Source>
+      <Name>button_container</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\button_container.xnb</Output>
+      <Time>2018-01-09T10:45:44.6771917+07:00</Time>
+    </Item>
+    <Item>
+      <Source>menu_background.jpg</Source>
+      <Name>menu_background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\menu_background.xnb</Output>
+      <Time>2018-01-09T10:45:44.6851975+07:00</Time>
     </Item>
     <Item>
       <Source>character_1.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\character_1.xnb</Output>
-      <Time>2018-01-01T19:10:27.0253045+07:00</Time>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\character_1.xnb</Output>
+      <Time>2018-01-09T10:45:44.6781929+07:00</Time>
     </Item>
     <Item>
       <Source>bomb.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\bomb.xnb</Output>
-      <Time>2018-01-01T19:44:54.6025793+07:00</Time>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\bomb.xnb</Output>
+      <Time>2018-01-09T10:45:44.6771917+07:00</Time>
     </Item>
     <Item>
       <Source>explosion.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\explosion.xnb</Output>
-      <Time>2018-01-03T09:12:40.9113984+07:00</Time>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\explosion.xnb</Output>
+      <Time>2018-01-09T10:45:44.6791931+07:00</Time>
     </Item>
     <Item>
       <Source>character_2.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\character_2.xnb</Output>
-      <Time>2018-01-06T17:54:06.4036024+07:00</Time>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\character_2.xnb</Output>
+      <Time>2018-01-09T10:45:44.6781929+07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -80,10 +80,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOfflineContent\</RootDirectory>
-      <LoggerRootDirectory>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\</LoggerRootDirectory>
-      <IntermediateDirectory>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOffline\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOfflineContent\</RootDirectory>
+      <LoggerRootDirectory>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -111,8 +111,8 @@
         <Value>2011-09-01T16:22:30+07:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2017-11-28T23:07:29.6996288+07:00</Value>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2017-10-01T14:48:52.3257122+07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
