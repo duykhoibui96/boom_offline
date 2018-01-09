@@ -16,7 +16,7 @@ namespace BoomOffline.Helper
         private Character player;
         private List<Bomb> bombs;
 
-        private Character bot; // Tạm thời 1 con trước đi
+        private List<Character> bots; // Tạm thời 1 con trước đi
 
         public BasicEntity[,] Map
         {
@@ -33,16 +33,16 @@ namespace BoomOffline.Helper
             get { return bombs; }
         }
 
-        public Character Bot
+        public List<Character> Bots
         {
-            get { return bot; }
-            set { bot = value; }
+            get { return bots; }
+            set { bots = value; }
         }
 
         public GameOperator()
         {
             player = new Character();
-            Bot = new Character();
+            Bots = new List<Character>();
             mapGenerator = new MapGenerator();
             bombs = new List<Bomb>();
         }
@@ -51,7 +51,12 @@ namespace BoomOffline.Helper
         {
             mapGenerator.GenerateMap(25, 25);
             player.Load(0, mapGenerator.Map[1, 1].Rect, 1, 1);
-            bot.Load(1, mapGenerator.Map[19, 19].Rect, 19, 19);
+            bots.Add(new Character());
+            bots[0].Load(1, mapGenerator.Map[19, 19].Rect, 19, 19);
+            bots.Add(new Character());
+            bots[1].Load(1, mapGenerator.Map[19, 1].Rect, 19, 1);
+            bots.Add(new Character());
+            bots[2].Load(1, mapGenerator.Map[1, 19].Rect, 1, 19);
         }
 
         public void Update(GameTime gameTime)
@@ -59,8 +64,8 @@ namespace BoomOffline.Helper
             CheckPlayerMoving(player); //Kiểm tra xem nhân vật có lệnh di chuyển hay không
             CheckSetBomb(player); //Kiểm tra xem nhân vật có lệnh đặt bom hay không
 
-            CheckPlayerMoving(bot, true);
-            //CheckSetBomb(bot);
+            foreach (var b in bots)
+                CheckPlayerMoving(b, true);
 
             foreach (var bomb in bombs) //Cập nhật trạng thái của quả bom
             {
@@ -91,10 +96,13 @@ namespace BoomOffline.Helper
                 {
                     if (bomb.State == Bomb.BombState.Explosion)
                     {
-                        if (bot.IsAlive && bomb.IsInExplosionArea(bot.CurRect))
-                        {
-                            bot.IsAlive = false;
-                        }
+                        for (int i = 0; i < bots.Count; i++ )
+                            if (bots[i].IsAlive && bomb.IsInExplosionArea(bots[i].CurRect))
+                            {
+                                bots[i].IsAlive = false;
+                                bots.Remove(bots[i]);
+                                i--;
+                            }
                         if (player.IsAlive && bomb.IsInExplosionArea(player.CurRect))
                         {
                             player.IsAlive = false;
@@ -105,7 +113,8 @@ namespace BoomOffline.Helper
             }
 
             player.Update(gameTime);//Cập nhật trạng thái nhân vật
-            bot.Update(gameTime); //Cập nhật trạng thái bot
+            foreach (var b in bots)
+                b.Update(gameTime); //Cập nhật trạng thái bot
 
             bombs.Remove(bombs.Find(bomb => bomb.State == Bomb.BombState.End)); //Xóa các quả bom đã nổ
         }
@@ -175,7 +184,7 @@ namespace BoomOffline.Helper
 
                 if (movementIndex != -1 && mapGenerator.IsValidLocation(characterI, characterJ) && !bombs.Any(bomb => bomb.State != Bomb.BombState.End && bomb.I == characterI && bomb.J == characterJ)) //Nếu nhân vật có lệnh di chuyển và vị trí mới hợp lệ
                 {
-                    if (!isBot || CheckValidBotPosition(bot,characterI, characterJ))
+                    if (!isBot || CheckValidBotPosition(character,characterI, characterJ))
                         character.Move(movementIndex); //Di chuyển nhân vật
                 }
             }
@@ -184,13 +193,13 @@ namespace BoomOffline.Helper
 
         private bool CheckValidBotPosition(Character curBot,int newI, int newJ)
         {
-            // return !bots.Any(bot => !bot.Equals(curBot) && bot.NewI == newI && bot.NewJ == newJ)
-            return true;
+            return !bots.Any(bot => !bot.Equals(curBot) && bot.NewI == newI && bot.NewJ == newJ);
+            //return true;
         }
 
         private int AImove(Character c)
         {
-            int tempI, tempJ, shortest, dir = -1;
+            int dir = -1;
             int distance = calcDistance(c.I, c.J, player.I, player.J);
 
             //kiểm tra có nằm trên đường đạn không

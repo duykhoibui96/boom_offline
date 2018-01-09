@@ -62,7 +62,10 @@ namespace BoomOffline.UI
             }
 
             gameOperator.Player.Draw(spriteBatch);
-            gameOperator.Bot.Draw(spriteBatch);
+            foreach (var bot in gameOperator.Bots)
+            {
+                bot.Draw(spriteBatch);
+            }
             returnToMenu.Draw(spriteBatch);
         }
     }
