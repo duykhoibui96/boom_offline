@@ -235,7 +235,16 @@ namespace BoomOffline.Helper
             if (checkInBombsArea(c.I, c.J))
             {
                 //tìm điểm an toàn trong phạm vi 3 nước tính từ vị trí hiện tại
-                return findSafePlace(c, 3);
+                switch (RoomSetting.Instance.MapSize)
+                {
+                    case 21:
+                        return findSafePlace(c, 3);
+                    case 31:
+                        return findSafePlace(c, 4);
+                    case 51:
+                        return findSafePlace(c, 5);
+                }
+                
             }
 
             //khi khoảng cách 2 bên quá xa thì thu hẹp khoảng cách
@@ -426,7 +435,7 @@ namespace BoomOffline.Helper
 
                 var explosionArea = new List<Point>();
                 //---------------------------------------------------------------------------------------
-
+                explosionArea.Add(new Point(currentCoordI, currentCoordJ));
 
                 //Cập nhật phạm vi nổ -----------------------------------------------------------------
                 for (int i = currentCoordI; i < Map.GetLength(0); i++)
