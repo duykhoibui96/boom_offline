@@ -50,7 +50,7 @@ namespace BoomOffline.Helper
 
         public void GenerateMap(int startX, int startY)
         {
-            GenerateLogicMap("map01.txt");
+            GenerateLogicMap(RoomSetting.Instance.MapName);
             map = new BasicEntity[LogicMap.Length, LogicMap[0].Length];
             var unit = Global.Instance.GameUnit;
             int startMapX = 25;

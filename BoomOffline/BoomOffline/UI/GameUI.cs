@@ -10,6 +10,13 @@ namespace BoomOffline.UI
 {
     abstract class GameUI: IModel
     {
+        public enum ViewType
+        {
+            Menu = 0,
+            Room = 1,
+            Match = 2,
+            Setting = 3
+        }
         public abstract void Load();
         public abstract void HandleEvent();
 

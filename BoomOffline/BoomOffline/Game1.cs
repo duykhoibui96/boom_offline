@@ -31,7 +31,7 @@ namespace BoomOffline
             graphics = new GraphicsDeviceManager(this)
             {
                 PreferredBackBufferWidth = 1024,
-                PreferredBackBufferHeight = 768
+                PreferredBackBufferHeight = 650
             };
             IsMouseVisible = true;
             Content.RootDirectory = "Content";
@@ -47,7 +47,6 @@ namespace BoomOffline
         {
             // TODO: Add your initialization logic here
 
-            gameUI = new Menu();
             Global.Instance.Graphics = GraphicsDevice;
             base.Initialize();
         }
@@ -61,6 +60,7 @@ namespace BoomOffline
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             ResManager.Instance.Load(Content);
+            gameUI = new Room();
             gameUI.Load();
             // TODO: use this.Content to load your game content here
         }
@@ -108,10 +108,13 @@ namespace BoomOffline
                 {
                     switch (ev.Param)
                     {
-                        case 0:
+                        case (int)GameUI.ViewType.Menu:
                             gameUI = new Menu();
                             break;
-                        case 1:
+                        case (int)GameUI.ViewType.Room:
+                            gameUI = new Room();
+                            break;
+                        case (int)GameUI.ViewType.Match:
                             gameUI = new Match();
                             break;
                     }

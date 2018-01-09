@@ -23,13 +23,11 @@ namespace BoomOffline.Resource
         }
 
         public GraphicsDevice Graphics;
-        public int Unit;
-        public int GameUnit;
+        public int Unit = 50;
+        public int GameUnit = 30;
 
         private Global()
         {
-            Unit = 50;
-            GameUnit = 30;
         }
 
     }

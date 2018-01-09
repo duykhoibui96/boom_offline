@@ -81,7 +81,8 @@
     <Compile Include="Event\GameEvent.cs" />
     <Compile Include="Helper\AnimationSprite.cs" />
     <Compile Include="Helper\GameOperator.cs" />
-    <Compile Include="Helper\MapGenearator.cs" />
+    <Compile Include="Helper\MapGenerator.cs" />
+    <Compile Include="Helper\RoomSetting.cs" />
     <Compile Include="Input\KeyboardEvent.cs" />
     <Compile Include="Input\MouseEvent.cs" />
     <Compile Include="Model\IModel.cs" />
@@ -93,6 +94,8 @@
     <Compile Include="UI\GameUI.cs" />
     <Compile Include="UI\Match.cs" />
     <Compile Include="UI\Menu.cs" />
+    <Compile Include="UI\Setting.cs" />
+    <Compile Include="UI\Room.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

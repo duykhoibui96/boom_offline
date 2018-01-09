@@ -23,7 +23,7 @@ namespace BoomOffline.Entity
         public void Load(string text, int x, int y, GameEvent ev)
         {
             int unit = Global.Instance.Unit;
-            int width = unit*4;
+            int width = unit*5;
             int height = unit;
             container = new BasicEntity();
             container.Load(ResManager.Instance.ButtonContainer, new Rectangle(x, y, width, height), Color.White);

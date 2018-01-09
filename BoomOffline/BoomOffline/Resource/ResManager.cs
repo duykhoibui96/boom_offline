@@ -19,8 +19,23 @@ namespace BoomOffline.Resource
 
         public Texture2D Character_1;
         public Texture2D Character_2;
+        public Texture2D Character_3;
+        public Texture2D Character_4;
+
+        public Texture2D Map;
+
+        public Texture2D Map_1;
+        public Texture2D Map_2;
+        public Texture2D Map_3;
+        public Texture2D Map_4;
+
+        public Texture2D LeftArrow;
+        public Texture2D RightArrow;
+        public Texture2D Plus;
+        public Texture2D Minus;
 
         public Texture2D Bomb;
+        public Texture2D RoomBackground;
 
         public Texture2D Explosion;
 
@@ -49,10 +64,25 @@ namespace BoomOffline.Resource
 
             Character_1 = contentManager.Load<Texture2D>("character_1");
             Character_2 = contentManager.Load<Texture2D>("character_2");
+            Character_3 = contentManager.Load<Texture2D>("character_3");
+            Character_4 = contentManager.Load<Texture2D>("character_4");
 
             Bomb = contentManager.Load<Texture2D>("bomb");
+            RoomBackground = contentManager.Load<Texture2D>("room_background");
 
             Explosion = contentManager.Load<Texture2D>("explosion");
+
+            LeftArrow = contentManager.Load<Texture2D>("left_arrow");
+            RightArrow = contentManager.Load<Texture2D>("right_arrow");
+            Plus = contentManager.Load<Texture2D>("plus");
+            Minus = contentManager.Load<Texture2D>("minus");
+            Map = contentManager.Load<Texture2D>("map");
+
+            Map_1 = contentManager.Load<Texture2D>("map_01");
+            Map_2 = contentManager.Load<Texture2D>("map_02");
+            Map_3 = contentManager.Load<Texture2D>("map_03");
+            Map_4 = contentManager.Load<Texture2D>("map_04");
+
         }
 
     }

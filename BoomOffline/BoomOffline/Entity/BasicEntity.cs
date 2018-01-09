@@ -20,10 +20,16 @@ namespace BoomOffline.Entity
             set { rect = value; }
         }
 
+        public Texture2D CurTexture
+        {
+            get { return texture; }
+            set { texture = value; }
+        }
+
 
         public void Load(Texture2D texture, Rectangle rect, Color color)
         {
-            this.texture = texture;
+            this.CurTexture = texture;
             this.rect = rect;
             this.color = color;
         }
@@ -34,7 +40,7 @@ namespace BoomOffline.Entity
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, rect, color);
+            spriteBatch.Draw(CurTexture, rect, color);
         }
     }
 }

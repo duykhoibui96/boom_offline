@@ -20,9 +20,15 @@ namespace BoomOffline.Entity
             set { color = value; }
         }
 
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
+
         public void Load(string text, SpriteFont font, Vector2 vector, Color color, bool startFromMiddle = false)
         {
-            this.text = text;
+            this.Text = text;
             this.font = font;
             this.color = color;
 
@@ -41,7 +47,7 @@ namespace BoomOffline.Entity
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(font, text, vector, color);
+            spriteBatch.DrawString(font, Text, vector, color);
         }
     }
 }

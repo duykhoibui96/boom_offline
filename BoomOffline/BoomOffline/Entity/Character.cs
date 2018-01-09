@@ -117,7 +117,21 @@ namespace BoomOffline.Entity
             this.i = this.newI = i;
             this.j = this.newJ = j;
             TimeForAgony = 1000;
-            var characterSprite = playerType == 0 ? ResManager.Instance.Character_1 : ResManager.Instance.Character_2;
+            var characterSprite = ResManager.Instance.Character_1;
+
+            switch (playerType)
+            {
+                case 1:
+                    characterSprite = ResManager.Instance.Character_2;
+                    break;
+                case 2:
+                    characterSprite = ResManager.Instance.Character_3;
+                    break;
+                case 3:
+                    characterSprite = ResManager.Instance.Character_4;
+                    break;
+            }
+
             sprite = characterSprite;
             int frameWidth = characterSprite.Width / 3;
             int frameHeight = characterSprite.Height / 6;

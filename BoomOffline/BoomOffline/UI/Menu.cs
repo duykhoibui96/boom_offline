@@ -34,8 +34,8 @@ namespace BoomOffline.UI
             var viewPort = Global.Instance.Graphics.Viewport;
             title.Load("BOOM OFFLINE",ResManager.Instance.Font_2,new Vector2(viewPort.Width / 2, unit),Color.Yellow,true);
             background.Load(ResManager.Instance.MenuBackground, new Rectangle(0, 0, viewPort.Width, viewPort.Height), Color.White);
-            newGame.Load("NEW GAME", unit,unit * 3,new GameEvent(GameEvent.Type.SwitchView, 1));
-            setting.Load("SETTING", unit, unit * 4 + unit / 2, new GameEvent(GameEvent.Type.SwitchView,2));
+            newGame.Load("NEW GAME", unit,unit * 3,new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Room));
+            setting.Load("SETTING", unit, unit * 4 + unit / 2, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Setting));
             exit.Load("EXIT", unit, unit * 6, new GameEvent(GameEvent.Type.Exit));
             
         }

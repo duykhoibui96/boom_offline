@@ -30,7 +30,7 @@ namespace BoomOffline.UI
             var viewPort = Global.Instance.Graphics.Viewport;
             var unit = Global.Instance.Unit;
             gameOperator.Init();
-            returnToMenu.Load("RETURN TO MENU", viewPort.Width - unit * 5, unit, new GameEvent(GameEvent.Type.SwitchView, 0));
+            returnToMenu.Load("RETURN TO MENU", viewPort.Width - unit * 5, unit, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
         }
 
         public override void HandleEvent()
