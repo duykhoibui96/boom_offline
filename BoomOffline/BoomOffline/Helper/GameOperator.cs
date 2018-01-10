@@ -77,7 +77,7 @@ namespace BoomOffline.Helper
 
         public void Update(GameTime gameTime)
         {
-            CheckPlayerMoving(player); //Kiểm tra xem nhân vật có lệnh di chuyển hay không
+            
             CheckSetBomb(player); //Kiểm tra xem nhân vật có lệnh đặt bom hay không
 
             foreach (var b in bots)
@@ -104,6 +104,8 @@ namespace BoomOffline.Helper
                 }
 
             }
+
+            CheckPlayerMoving(player); //Kiểm tra xem nhân vật có lệnh di chuyển hay không
 
 
             if (player.IsAlive)
@@ -218,6 +220,12 @@ namespace BoomOffline.Helper
                 }
             }
 
+        }
+
+        public bool IsPossibleMove(int i, int j)
+        {
+            return mapGenerator.IsValidLocation(i, j) &&
+                   !bombs.Any(bomb => bomb.ExplosionArea.Any(area => area.X == i && area.Y == j));
         }
 
         private bool CheckValidBotPosition(Character curBot,int newI, int newJ)
