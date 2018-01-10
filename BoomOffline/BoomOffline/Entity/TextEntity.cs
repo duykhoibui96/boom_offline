@@ -40,6 +40,11 @@ namespace BoomOffline.Entity
             this.vector = vector;
         }
 
+        public void Offset(int x, int y)
+        {
+            vector.X += x;
+            vector.Y += y;
+        }
 
         public void Update(GameTime gameTime)
         {

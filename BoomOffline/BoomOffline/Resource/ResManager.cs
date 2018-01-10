@@ -16,6 +16,7 @@ namespace BoomOffline.Resource
 
         public SpriteFont Font_1;
         public SpriteFont Font_2;
+        public SpriteFont Font_3;
 
         public Texture2D Character_1;
         public Texture2D Character_2;
@@ -61,6 +62,7 @@ namespace BoomOffline.Resource
 
             Font_1 = contentManager.Load<SpriteFont>("font_1");
             Font_2 = contentManager.Load<SpriteFont>("font_2");
+            Font_3 = contentManager.Load<SpriteFont>("font_3");
 
             Character_1 = contentManager.Load<Texture2D>("character_1");
             Character_2 = contentManager.Load<Texture2D>("character_2");

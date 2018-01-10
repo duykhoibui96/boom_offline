@@ -22,11 +22,13 @@ namespace BoomOffline.Entity
         public const int CONGRATULATION = 4;
         public const int DEATH = 5;
 
+        public bool isPlayer;
         public bool isMoving;
         private bool isAlive;
         private Texture2D sprite;
         private Rectangle curRect;
         private Rectangle newRect;
+        private TextEntity playerName;
 
         private AnimationSprite[] sprites;
         private int currentSprite;
@@ -109,8 +111,15 @@ namespace BoomOffline.Entity
         }
 
 
-        public void Load(int playerType, Rectangle rect, int i, int j)
+        public void Load(int playerType, Rectangle rect, int i, int j, bool isPlayer = false)
         {
+            this.isPlayer = isPlayer;
+            if (isPlayer)
+            {
+                var unit = Global.Instance.GameUnit;
+                playerName = new TextEntity();
+                playerName.Load("YOU", ResManager.Instance.Font_3, new Vector2(rect.X + unit / 2, rect.Y - unit / 2), Color.White, true);
+            }
             isAlive = true;
             this.curRect = rect;
             currentSprite = 1;
@@ -190,15 +199,31 @@ namespace BoomOffline.Entity
                         {
                             case MOVE_UP:
                                 curRect.Offset(0, -2);
+                                if (isPlayer)
+                                {
+                                    playerName.Offset(0, -2);
+                                }
                                 break;
                             case MOVE_DOWN:
                                 curRect.Offset(0, 2);
+                                if (isPlayer)
+                                {
+                                    playerName.Offset(0, 2);
+                                }
                                 break;
                             case MOVE_LEFT:
                                 curRect.Offset(-2, 0);
+                                if (isPlayer)
+                                {
+                                    playerName.Offset(-2, 0);
+                                }
                                 break;
                             case MOVE_RIGHT:
                                 curRect.Offset(2, 0);
+                                if (isPlayer)
+                                {
+                                    playerName.Offset(2, 0);
+                                }
                                 break;
                         }
 
@@ -233,6 +258,8 @@ namespace BoomOffline.Entity
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (isPlayer)
+                playerName.Draw(spriteBatch);
             spriteBatch.Draw(sprite, curRect, sprites[currentSprite].Frame, Color.White);
         }
     }

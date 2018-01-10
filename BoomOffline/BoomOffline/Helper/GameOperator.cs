@@ -52,7 +52,7 @@ namespace BoomOffline.Helper
             Random rand = new Random();
             int w, h, type;
             mapGenerator.GenerateMap(25, 25);
-            player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[1, 1].Rect, 1, 1);
+            player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[1, 1].Rect, 1, 1, true);
             int divide = RoomSetting.Instance.MapSize / RoomSetting.Instance.NumOfBot;
 
             //Đọc dữ liệu từ UserSetting.Instance.NumOfBots để biết số con bot
