@@ -1,5 +1,6 @@
 Content\font_1.xnb
 Content\font_2.xnb
+Content\font_3.xnb
 Content\button_container.xnb
 Content\menu_background.xnb
 Content\character_1.xnb
@@ -18,4 +19,5 @@ Content\map_04.xnb
 Content\minus.xnb
 Content\plus.xnb
 Content\room_background.xnb
-Content\font_3.xnb
+Content\cursor.xnb
+Content\button_container_2.xnb

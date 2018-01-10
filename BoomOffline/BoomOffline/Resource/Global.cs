@@ -26,6 +26,9 @@ namespace BoomOffline.Resource
         public int Unit = 50;
         public int GameUnit = 30;
 
+        public Camera currentCamera;
+        public Vector2 map_size;
+
         private Global()
         {
         }

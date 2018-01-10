@@ -40,6 +40,8 @@ namespace BoomOffline.Resource
 
         public Texture2D Explosion;
 
+        public Texture2D Cursor;
+
         public static ResManager Instance
         {
             get
@@ -58,7 +60,7 @@ namespace BoomOffline.Resource
         public void Load(ContentManager contentManager)
         {
             MenuBackground = contentManager.Load<Texture2D>("menu_background");
-            ButtonContainer = contentManager.Load<Texture2D>("button_container");
+            ButtonContainer = contentManager.Load<Texture2D>("button_container_2");
 
             Font_1 = contentManager.Load<SpriteFont>("font_1");
             Font_2 = contentManager.Load<SpriteFont>("font_2");
@@ -84,6 +86,8 @@ namespace BoomOffline.Resource
             Map_2 = contentManager.Load<Texture2D>("map_02");
             Map_3 = contentManager.Load<Texture2D>("map_03");
             Map_4 = contentManager.Load<Texture2D>("map_04");
+
+            Cursor = contentManager.Load<Texture2D>("cursor");
 
         }
 
