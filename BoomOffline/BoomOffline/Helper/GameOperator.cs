@@ -218,7 +218,7 @@ namespace BoomOffline.Helper
 
                 if (movementIndex != -1 && mapGenerator.IsValidLocation(characterI, characterJ) && !bombs.Any(bomb => bomb.State != Bomb.BombState.End && bomb.I == characterI && bomb.J == characterJ)) //Nếu nhân vật có lệnh di chuyển và vị trí mới hợp lệ
                 {
-                    if (!isBot || CheckValidBotPosition(character,characterI, characterJ))
+                    if (!isBot || CheckValidBotPosition(character, characterI, characterJ))
                         character.Move(movementIndex); //Di chuyển nhân vật
                 }
             }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace BoomOffline.Input
@@ -10,8 +12,10 @@ namespace BoomOffline.Input
     class MouseEvent
     {
         private static MouseEvent instance;
-        private MouseState previousState;
-        private MouseState currentMouseState;
+        public MouseState previousState;
+        public MouseState currentMouseState;
+
+        private Rectangle mouseRect;
 
         public bool IsHover(Rectangle rect)
         {
@@ -41,11 +45,19 @@ namespace BoomOffline.Input
         {
             previousState = currentMouseState;
             currentMouseState = Mouse.GetState();
+
+            mouseRect.X = currentMouseState.X;
+            mouseRect.Y = currentMouseState.Y;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Resource.ResManager.Instance.Cursor, mouseRect, Color.White);
         }
 
         private MouseEvent()
         {
-
+            mouseRect = new Rectangle(0, 0, 50, 50);
         }
     }
 }

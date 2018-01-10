@@ -13,7 +13,7 @@ namespace BoomOffline.UI
 {
     class Menu: GameUI
     {
-        private TextEntity title;
+        //private TextEntity title;
         private BasicEntity background;
         private Button newGame;
         private Button setting;
@@ -21,7 +21,7 @@ namespace BoomOffline.UI
 
         public Menu()
         {
-            title = new TextEntity();
+            //title = new TextEntity();
             background = new BasicEntity();
             newGame = new Button();
             setting = new Button();
@@ -32,11 +32,11 @@ namespace BoomOffline.UI
         {
             int unit = Global.Instance.Unit;
             var viewPort = Global.Instance.Graphics.Viewport;
-            title.Load("BOOM OFFLINE",ResManager.Instance.Font_2,new Vector2(viewPort.Width / 2, unit),Color.Yellow,true);
+            //title.Load("BOOM OFFLINE",ResManager.Instance.Font_2,new Vector2(viewPort.Width / 2, unit),Color.Yellow,true);
             background.Load(ResManager.Instance.MenuBackground, new Rectangle(0, 0, viewPort.Width, viewPort.Height), Color.White);
-            newGame.Load("NEW GAME", unit,unit * 3,new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Room));
-            setting.Load("SETTING", unit, unit * 4 + unit / 2, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Setting));
-            exit.Load("EXIT", unit, unit * 6, new GameEvent(GameEvent.Type.Exit));
+            newGame.Load("NEW GAME", unit,unit * 4,new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Room));
+            setting.Load("SETTING", unit, unit * 6 - 25, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Setting));
+            exit.Load("EXIT", unit, unit * 7, new GameEvent(GameEvent.Type.Exit));
             
         }
 
@@ -57,7 +57,7 @@ namespace BoomOffline.UI
         public override void Draw(SpriteBatch spriteBatch)
         {
             background.Draw(spriteBatch);
-            title.Draw(spriteBatch);
+            //title.Draw(spriteBatch);
             newGame.Draw(spriteBatch);
             setting.Draw(spriteBatch);
             exit.Draw(spriteBatch);

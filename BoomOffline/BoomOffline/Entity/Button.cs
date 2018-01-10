@@ -28,7 +28,7 @@ namespace BoomOffline.Entity
             container = new BasicEntity();
             container.Load(ResManager.Instance.ButtonContainer, new Rectangle(x, y, width, height), Color.White);
             this.text = new TextEntity();
-            this.text.Load(text, ResManager.Instance.Font_1, new Vector2(x + width / 2, y + 10), Color.Yellow, true);
+            this.text.Load(text, ResManager.Instance.Font_1, new Vector2(x + width / 2, y + 9), Color.PaleTurquoise, true);
             this.ev = ev;
         }
 
@@ -47,7 +47,7 @@ namespace BoomOffline.Entity
             }
             else
             {
-                text.TextColor = Color.Yellow;
+                text.TextColor = Color.PaleTurquoise;
             }
 
         }

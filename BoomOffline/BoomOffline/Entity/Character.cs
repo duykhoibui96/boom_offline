@@ -39,6 +39,12 @@ namespace BoomOffline.Entity
         private int i, j;
         private int newI, newJ;
 
+        //For camera
+        private float max_cam_wid;
+        private float max_cam_hei;
+        private float cur_cam_wid;
+        private float cur_cam_hei;
+
         public bool IsMoving
         {
             get { return isMoving; }
@@ -119,6 +125,12 @@ namespace BoomOffline.Entity
                 var unit = Global.Instance.GameUnit;
                 playerName = new TextEntity();
                 playerName.Load("YOU", ResManager.Instance.Font_3, new Vector2(rect.X + unit / 2, rect.Y - unit / 2), Color.White, true);
+                //For camera
+                int map_x = 300, map_y = 25;
+                max_cam_wid = Global.Instance.map_size.X - (1024 - map_x);
+                max_cam_hei = Global.Instance.map_size.Y - (650 - map_y);
+                cur_cam_wid = 0;
+                cur_cam_hei = 0;
             }
             isAlive = true;
             this.curRect = rect;
@@ -203,6 +215,7 @@ namespace BoomOffline.Entity
                                 {
                                     playerName.Offset(0, -2);
                                 }
+                                MoveCamera('u');
                                 break;
                             case MOVE_DOWN:
                                 curRect.Offset(0, 2);
@@ -210,6 +223,7 @@ namespace BoomOffline.Entity
                                 {
                                     playerName.Offset(0, 2);
                                 }
+                                MoveCamera('d');
                                 break;
                             case MOVE_LEFT:
                                 curRect.Offset(-2, 0);
@@ -217,6 +231,7 @@ namespace BoomOffline.Entity
                                 {
                                     playerName.Offset(-2, 0);
                                 }
+                                MoveCamera('l');
                                 break;
                             case MOVE_RIGHT:
                                 curRect.Offset(2, 0);
@@ -224,6 +239,7 @@ namespace BoomOffline.Entity
                                 {
                                     playerName.Offset(2, 0);
                                 }
+                                MoveCamera('r');
                                 break;
                         }
 
@@ -261,6 +277,56 @@ namespace BoomOffline.Entity
             if (isPlayer)
                 playerName.Draw(spriteBatch);
             spriteBatch.Draw(sprite, curRect, sprites[currentSprite].Frame, Color.White);
+        }
+
+        private void MoveCamera(char d)
+        {
+            if (!isPlayer) return;
+            Vector2 vector_move = new Vector2(0, 0);
+            switch (d)
+            {
+                case 'u':
+                    cur_cam_hei -= 2;
+                    if (cur_cam_hei < 0)
+                    {
+                        cur_cam_hei = 0;
+                    }
+
+                    if(cur_cam_hei > 0 && cur_cam_hei < max_cam_hei)
+                        vector_move.Y = -2;
+                    break;
+                case 'd':
+                    cur_cam_hei += 2;
+                    if (cur_cam_hei > max_cam_hei)
+                    {
+                        cur_cam_hei = max_cam_hei;
+                    }
+
+                    if(cur_cam_hei > 0 && cur_cam_hei < max_cam_hei)
+                        vector_move.Y = 2;
+                    break;
+                case 'l':
+                    cur_cam_wid -= 2;
+                    if (cur_cam_wid < 0)
+                    {
+                        cur_cam_wid = 0;
+                    }
+
+                    if (cur_cam_wid > 0 && cur_cam_wid < max_cam_wid)
+                        vector_move.X = -2;
+                    break;
+                case 'r':
+                    cur_cam_wid += 2;
+                    if (cur_cam_wid > max_cam_wid)
+                    {
+                        cur_cam_wid = max_cam_wid;
+                    }
+
+                    if (cur_cam_wid > 0 && cur_cam_wid < max_cam_wid)
+                        vector_move.X = 2;
+                    break;
+            }
+            Global.Instance.currentCamera.Move(vector_move);
         }
     }
 }

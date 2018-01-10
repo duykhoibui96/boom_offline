@@ -53,7 +53,7 @@ namespace BoomOffline.Helper
             GenerateLogicMap(RoomSetting.Instance.MapName);
             map = new BasicEntity[LogicMap.Length, LogicMap[0].Length];
             var unit = Global.Instance.GameUnit;
-            int startMapX = 25;
+            int startMapX = 300;  //25->300
             int startMapY = 25;
 
             Texture2D obstacle = new Texture2D(Global.Instance.Graphics, 1, 1);
@@ -69,7 +69,7 @@ namespace BoomOffline.Helper
                     map[i, j].Load(LogicMap[i][j] == TYPE_OBSTACLE ? obstacle : empty, new Rectangle(startMapX + unit * j, startMapY + unit * i, unit, unit), Color.White);
                 }
             }
-
+            Global.Instance.map_size = new Vector2(map.GetLength(0) * unit, map.GetLength(1) * unit);
         }
 
         public bool IsValidLocation(int i, int j)

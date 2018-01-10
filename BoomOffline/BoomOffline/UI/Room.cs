@@ -142,8 +142,8 @@ namespace BoomOffline.UI
 
             selectedMap = mapInfo.ToList().FindIndex(curMap => curMap.MapName == roomSetting.MapName);
             map.Load(mapInfo[selectedMap].MapTexture, new Rectangle(rightSectionX + unit, rightSectionY, unit * 6, unit * 6), Color.White);
-            previousMap.Load(res.LeftArrow, new Rectangle(rightSectionX, rightSectionY + unit * 2 + unit / 2, unit, unit), Color.White);
-            nextMap.Load(res.RightArrow, new Rectangle(rightSectionX + unit * 7, rightSectionY + unit * 2 + unit / 2, unit, unit), Color.White);
+            previousMap.Load(res.LeftArrow, new Rectangle(rightSectionX - 5, rightSectionY + unit * 2 + unit / 2, unit, unit), Color.White);
+            nextMap.Load(res.RightArrow, new Rectangle(rightSectionX + unit * 7 + 5, rightSectionY + unit * 2 + unit / 2, unit, unit), Color.White);
 
             fight.Load("FIGHT", rightSectionX + unit + unit / 2, rightSectionY + unit * 7, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Match));
             returnToMenu.Load("RETURN TO MENU", rightSectionX + unit + unit / 2, rightSectionY + unit * 8 + unit / 2, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));

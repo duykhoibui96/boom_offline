@@ -33,7 +33,7 @@ namespace BoomOffline
                 PreferredBackBufferWidth = 1024,
                 PreferredBackBufferHeight = 650
             };
-            IsMouseVisible = true;
+            //IsMouseVisible = true;
             Content.RootDirectory = "Content";
         }
 
@@ -136,6 +136,7 @@ namespace BoomOffline
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             gameUI.Draw(spriteBatch);
+            MouseEvent.Instance.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
