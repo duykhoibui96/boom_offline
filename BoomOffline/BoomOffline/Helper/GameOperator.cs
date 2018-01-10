@@ -16,6 +16,7 @@ namespace BoomOffline.Helper
         private Character player;
         private List<Bomb> bombs;
         private Astar astar;
+        Random rand = new Random();
 
         private List<Character> bots;
 
@@ -50,7 +51,6 @@ namespace BoomOffline.Helper
 
         public void Init()
         {
-            Random rand = new Random();
             int w, h, type;
             mapGenerator.GenerateMap(25, 25);
             player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[1, 1].Rect, 1, 1, true);
@@ -259,7 +259,8 @@ namespace BoomOffline.Helper
             }
 
             //khi khoảng cách 2 bên quá xa thì thu hẹp khoảng cách
-            if (distance > 4)
+            int d = rand.Next(1, 4);
+            if (distance > d)
             {
                 if (RoomSetting.Instance.MapSize == 21)
                 {
