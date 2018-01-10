@@ -15,6 +15,7 @@ namespace BoomOffline.Helper
         private MapGenerator mapGenerator;
         private Character player;
         private List<Bomb> bombs;
+        private Astar astar;
 
         private List<Character> bots;
 
@@ -73,6 +74,8 @@ namespace BoomOffline.Helper
                 bots.Add(new Character());
                 bots[i].Load(type, mapGenerator.Map[h, w].Rect, h, w);
             }
+
+            astar = new Astar(this);
         }
 
         public void Update(GameTime gameTime)
@@ -246,20 +249,34 @@ namespace BoomOffline.Helper
                 switch (RoomSetting.Instance.MapSize)
                 {
                     case 21:
-                        return findSafePlace(c, 3);
-                    case 31:
-                        return findSafePlace(c, 4);
-                    case 51:
                         return findSafePlace(c, 5);
+                    case 31:
+                        return findSafePlace(c, 6);
+                    case 51:
+                        return findSafePlace(c, 7);
                 }
                 
             }
 
             //khi khoảng cách 2 bên quá xa thì thu hẹp khoảng cách
-            if (distance > 5)
+            if (distance > 4)
             {
-                int[] possibleMove = findPossibleMove(c);
-                dir = findNextMove(possibleMove, c, player.I, player.J);
+                if (RoomSetting.Instance.MapSize == 21)
+                {
+                    ANode pos = astar.FindPath(this, new Vector2(c.I, c.J), new Vector2(player.I, player.J));
+                    if (pos != null)
+                        dir = nextCell(pos, c);
+                    else
+                    {
+                        int[] possibleMove = findPossibleMove(c);
+                        dir = findNextMove(possibleMove, c, player.I, player.J);
+                    }
+                }
+                else
+                {
+                    int[] possibleMove = findPossibleMove(c);
+                    dir = findNextMove(possibleMove, c, player.I, player.J);
+                }
             }
             //khi gần rồi thì tấn công
             else
@@ -271,6 +288,20 @@ namespace BoomOffline.Helper
             }
 
             return dir;
+        }
+
+        public int nextCell(ANode pos, Character c)
+        {
+            if (pos.Position.X - c.J > 0)
+                return 3;
+            else if (pos.Position.X - c.J < 0)
+                return 2;
+            else if (pos.Position.Y - c.I > 0)
+                return 1;
+            else if (pos.Position.Y - c.I < 0)
+                return 0;
+            else
+                return -1;
         }
 
         private int findSafePlace(Character c, int length)
@@ -302,9 +333,16 @@ namespace BoomOffline.Helper
 
             if (tempI != -1 || tempJ != -1)
             {
+                if (RoomSetting.Instance.MapSize == 21)
+                {
+                    ANode pos = astar.FindPath(this, new Vector2(c.I, c.J), new Vector2(tempI, tempJ));
+                    if (pos != null)
+                        return nextCell(pos, c);
+                    return findNextMove(findPossibleMove(c, true), c, tempI, tempJ);
+                }
                 return findNextMove(findPossibleMove(c, true), c, tempI, tempJ);
             }
-            return 0;
+            return -1;
         }
 
         private int findNextMove(int[] possibleMove, Character c, int destI, int destJ)

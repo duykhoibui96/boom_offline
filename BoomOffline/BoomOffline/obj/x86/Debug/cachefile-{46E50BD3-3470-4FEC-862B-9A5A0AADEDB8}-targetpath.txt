@@ -18,3 +18,4 @@ Content\map_04.xnb
 Content\minus.xnb
 Content\plus.xnb
 Content\room_background.xnb
+Content\font_3.xnb

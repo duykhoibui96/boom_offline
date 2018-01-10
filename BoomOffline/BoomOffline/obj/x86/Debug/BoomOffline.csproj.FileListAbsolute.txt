@@ -38,3 +38,4 @@ E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Deb
 E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\minus.xnb
 E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\plus.xnb
 E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\room_background.xnb
+E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_3.xnb

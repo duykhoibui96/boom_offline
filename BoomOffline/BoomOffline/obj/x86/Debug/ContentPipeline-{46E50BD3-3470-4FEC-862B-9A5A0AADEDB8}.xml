@@ -181,6 +181,15 @@
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\room_background.xnb</Output>
       <Time>2018-01-09T19:18:13.5320606+07:00</Time>
     </Item>
+    <Item>
+      <Source>font_3.spritefont</Source>
+      <Name>font_3</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_3.xnb</Output>
+      <Time>2018-01-10T09:35:45.8409065+07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{46E50BD3-3470-4FEC-862B-9A5A0AADEDB8}</ContentProjectGUID>
