@@ -116,6 +116,7 @@ namespace BoomOffline.Entity
 
         public bool IsInExplosionArea(Rectangle rect)
         {
+            rect.Inflate(-5, -5);
             return rect.Intersects(this.Rect) || explosionArea.Any(explosion => explosion.Intersects(rect));
         }
 
