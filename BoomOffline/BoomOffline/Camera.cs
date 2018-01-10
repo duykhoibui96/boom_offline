@@ -84,7 +84,7 @@ namespace BoomOffline
                 movement.X += offsetX / Zoom;
                 movement.Y += offsetY / Zoom;
 
-                //Move(movement);
+                Move(movement);
             }
 
 

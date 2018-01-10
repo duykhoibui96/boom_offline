@@ -1,3 +1,4 @@
 E:\Tony\Documents\Game\Projects\BoomOffline\BoomOffline\BoomOfflineContent\obj\x86\Debug\BoomOfflineContent.contentprojResolveAssemblyReference.cache
 E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOfflineContent\obj\x86\Debug\BoomOfflineContent.contentprojResolveAssemblyReference.cache
 R:\1. Hoc Tap\Nam IV - HKI\PTG\Cuoi-ki\boom_offline\BoomOffline\BoomOfflineContent\obj\x86\Debug\BoomOfflineContent.contentprojResolveAssemblyReference.cache
+R:\GIT\boom_offline\BoomOffline\BoomOfflineContent\obj\x86\Debug\BoomOfflineContent.contentprojResolveAssemblyReference.cache
