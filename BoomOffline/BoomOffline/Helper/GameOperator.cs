@@ -108,7 +108,7 @@ namespace BoomOffline.Helper
         {
             if (player.IsAlive && bots.Count == 0) //Giết hết bot
             {
-                GameResult.Instance.IsWin = false;
+                GameResult.Instance.IsWin = true;
                 EventQueue.Instance.AddEvent(new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Result));
                 return;
             }
