@@ -69,9 +69,9 @@ namespace BoomOffline.Helper
                 for (j = 0; j < RoomSetting.Instance.MapSize; j++)
                 {
                     if (!go.IsPossibleMove(i, j))
-                        listNode.Add(new ANode(new Vector2(i, j), false));
+                        listNode.Add(new ANode(new Vector2(j, i), true));
                     else
-                        listNode.Add(new ANode(new Vector2(i, j), true));
+                        listNode.Add(new ANode(new Vector2(j, i), false));
                 }
                 grid.Add(listNode);
             }
@@ -107,7 +107,7 @@ namespace BoomOffline.Helper
                 foreach (ANode aN in neighbors)
                 {
 
-                    if (!ClosedList.Contains(aN) && aN.isWall)
+                    if (!ClosedList.Contains(aN) && !aN.isWall)
                     {
                         if (!OpenList.Contains(aN))
                         {
