@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BoomOffline.Entity;
+using BoomOffline.Event;
 using BoomOffline.Input;
 using BoomOffline.UI;
 using Microsoft.Xna.Framework;
@@ -105,7 +106,12 @@ namespace BoomOffline.Helper
 
         public void Update(GameTime gameTime)
         {
-            
+            if (player.IsAlive && bots.Count == 0) //Giết hết bot
+            {
+                GameResult.Instance.IsWin = false;
+                EventQueue.Instance.AddEvent(new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Result));
+                return;
+            }
             CheckSetBomb(player); //Kiểm tra xem nhân vật có lệnh đặt bom hay không
 
             foreach (var b in bots)
@@ -118,7 +124,7 @@ namespace BoomOffline.Helper
 
 
             //Kiểm tra nổ lan
-            foreach (var bomb in bombs) // Kiểm tra xem bom có nổ chết thằng nào ko
+            foreach (var bomb in bombs) // Kiểm tra xem bom có nổ chết ai ko
             {
                 if (bomb.State == Bomb.BombState.Explosion)
                 {
@@ -138,7 +144,7 @@ namespace BoomOffline.Helper
 
             if (player.IsAlive)
             {
-                foreach (var bomb in bombs) // Kiểm tra xem bom có nổ chết thằng nào ko
+                foreach (var bomb in bombs) // Kiểm tra xem bom có nổ chết ai ko
                 {
                     if (bomb.State == Bomb.BombState.Explosion)
                     {
@@ -157,6 +163,15 @@ namespace BoomOffline.Helper
 
                 }
             }
+            else
+            {
+                if (player.TimeForAgony <= 0)
+                {
+                    GameResult.Instance.IsWin = false;
+                    EventQueue.Instance.AddEvent(new GameEvent(GameEvent.Type.SwitchView,(int)GameUI.ViewType.Result));
+                    return;
+                }
+            }
 
             player.Update(gameTime);//Cập nhật trạng thái nhân vật
             var removeBots = new List<Character>(); //Danh sách hỏa thiêu
@@ -169,7 +184,7 @@ namespace BoomOffline.Helper
                 }
             }
 
-            foreach (var removeBot in removeBots) //Hỏa thiêu những thằng đã hấp hối xong
+            foreach (var removeBot in removeBots) //Hỏa thiêu những nhân vật đã hấp hối xong
             {
                 bots.Remove(removeBot);
             }

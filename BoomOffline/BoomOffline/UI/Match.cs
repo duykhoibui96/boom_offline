@@ -23,6 +23,7 @@ namespace BoomOffline.UI
         private SpriteBatch spriteBatch;
         private Button returnToMenu;
         private Button continueGame;
+        private Button setting;
         private Camera camera;
         private bool isPause;
 
@@ -32,6 +33,7 @@ namespace BoomOffline.UI
             spriteBatch = new SpriteBatch(Global.Instance.Graphics);
             returnToMenu = new Button();
             continueGame = new Button();
+            setting = new Button();
             pauseScreen = new BasicEntity();
         }
 
@@ -41,11 +43,11 @@ namespace BoomOffline.UI
             var unit = Global.Instance.Unit;
             camera = new Camera();
             Global.Instance.currentCamera = camera;
-            returnToMenu.Load("Main menu", (viewPort.Width - unit * 5) / 2, unit * 9, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
-            continueGame.Load("Continue", (viewPort.Width - unit * 5) / 2, unit * 10 + unit / 2, new GameEvent(GameEvent.Type.Resume));
+            returnToMenu.Load("Main menu", (viewPort.Width - unit * 5) / 2, unit * 12, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
+            continueGame.Load("Continue", (viewPort.Width - unit * 5) / 2, unit * 9, new GameEvent(GameEvent.Type.Resume));
             //var viewPort = Global.Instance.Graphics.Viewport;
             pauseScreen.Load(ResManager.Instance.PauseBackground,new Rectangle(0,0,viewPort.Width,viewPort.Height),Color.White);
-            
+            setting.Load("Setting", (viewPort.Width - unit * 5) / 2, unit * 10 + unit / 2, new GameEvent(GameEvent.Type.SwitchView,(int)GameUI.ViewType.Setting));
             gameOperator.Init();
         }
 
@@ -72,6 +74,7 @@ namespace BoomOffline.UI
             {
                 returnToMenu.Update(gameTime);
                 continueGame.Update(gameTime);
+                setting.Update(gameTime);
             }      
             else
                 gameOperator.Update(gameTime);
@@ -85,6 +88,7 @@ namespace BoomOffline.UI
                 pauseScreen.Draw(spriteBatch);
                 continueGame.Draw(spriteBatch);
                 returnToMenu.Draw(spriteBatch);
+                setting.Draw(spriteBatch);
                 spriteBatch.End();
             }
             else
