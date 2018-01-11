@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using BoomOffline.Helper;
+
 namespace BoomOffline
 {
     class Camera
@@ -59,9 +61,12 @@ namespace BoomOffline
 
         public Matrix GetTransformation()
         {
+            int posCam = 0;
+            if (RoomSetting.Instance.MapSize != 21)
+                posCam = 150;
             var graphicsDevice = Resource.Global.Instance.Graphics;
-            _transform =       // Thanks to o KB o for this solution
-              Matrix.CreateTranslation(new Vector3(-_pos.X, -_pos.Y, 0)) *
+            _transform =
+              Matrix.CreateTranslation(new Vector3(-_pos.X + posCam, -_pos.Y + posCam, 0)) *
                                          Matrix.CreateRotationZ(Rotation) *
                                          Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) *
                                          Matrix.CreateTranslation(new Vector3(graphicsDevice.Viewport.Width * 0.5f, graphicsDevice.Viewport.Height * 0.5f, 0));
