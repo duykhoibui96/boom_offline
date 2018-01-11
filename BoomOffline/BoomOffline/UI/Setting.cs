@@ -116,14 +116,18 @@ namespace BoomOffline.UI
 
         private VolumnControl musicControl;
         private VolumnControl soundControl;
+        private TextEntity title;
         private Button apply;
         private Button cancel;
+        private BasicEntity background;
 
 
         public Setting()
         {
+            background = new BasicEntity();
             musicControl = new VolumnControl();
             soundControl = new VolumnControl();
+            title = new TextEntity();
             apply = new Button();
             cancel = new Button();
         }
@@ -131,12 +135,14 @@ namespace BoomOffline.UI
         public override void Load()
         {
             SoundManager.Instance.Backup();
-            musicControl.Load(100, 100, VolumnControl.Type.Music);
-            soundControl.Load(100, 200, VolumnControl.Type.Sound);
             var viewPort = Global.Instance.Graphics.Viewport;
             var unit = Global.Instance.Unit;
-            apply.Load("APPLY", (viewPort.Width - unit * 11) / 2, 300, new GameEvent(GameEvent.Type.ApplySetting));
-            cancel.Load("CANCEL", (viewPort.Width - unit * 11) / 2 + unit * 6, 300, new GameEvent(GameEvent.Type.CancelSetting));
+            background.Load(ResManager.Instance.SettingBackground, new Rectangle(0,0,viewPort.Width,viewPort.Height),Color.White);
+            musicControl.Load(100, unit * 3, VolumnControl.Type.Music);
+            soundControl.Load(100, unit * 4, VolumnControl.Type.Sound);
+            title.Load("SETTING",ResManager.Instance.Font_2,new Vector2(viewPort.Width / 2, unit),Color.White,true);
+            apply.Load("APPLY", (viewPort.Width - unit * 11) / 2, unit * 6, new GameEvent(GameEvent.Type.ApplySetting));
+            cancel.Load("CANCEL", (viewPort.Width - unit * 11) / 2 + unit * 6, unit * 6, new GameEvent(GameEvent.Type.CancelSetting));
         }
 
         public override void HandleEvent()
@@ -179,8 +185,10 @@ namespace BoomOffline.UI
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            background.Draw(spriteBatch);
             musicControl.Draw(spriteBatch);
             soundControl.Draw(spriteBatch);
+            title.Draw(spriteBatch);
             apply.Draw(spriteBatch);
             cancel.Draw(spriteBatch);
         }

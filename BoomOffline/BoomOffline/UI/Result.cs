@@ -37,9 +37,9 @@ namespace BoomOffline.UI
             bool isWin = GameResult.Instance.IsWin;
 
             notification.Load(isWin ? "YOU WIN" : "GAME OVER!", ResManager.Instance.Font_2, new Vector2(viewPort.Width / 2, unit), Color.Yellow, true);
-            playAgain.Load("Play again", (viewPort.Width - unit * 5) / 2, unit * 3, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Match));
-            returnRoom.Load("Return room", (viewPort.Width - unit * 5) / 2, unit * 4 + unit / 2, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Room));
-            mainMenu.Load("Main menu", (viewPort.Width - unit * 5) / 2, unit * 6, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
+            playAgain.Load("PLAY AGAIN", (viewPort.Width - unit * 5) / 2, unit * 3, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Match));
+            returnRoom.Load("RETURN ROOM", (viewPort.Width - unit * 5) / 2, unit * 4 + unit / 2, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Room));
+            mainMenu.Load("MAIN MENU", (viewPort.Width - unit * 5) / 2, unit * 6, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
 
             if (isWin)
             {

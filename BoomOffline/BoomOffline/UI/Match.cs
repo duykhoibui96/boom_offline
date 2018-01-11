@@ -43,11 +43,11 @@ namespace BoomOffline.UI
             var unit = Global.Instance.Unit;
             camera = new Camera();
             Global.Instance.currentCamera = camera;
-            returnToMenu.Load("Main menu", (viewPort.Width - unit * 5) / 2, unit * 12, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
-            continueGame.Load("Continue", (viewPort.Width - unit * 5) / 2, unit * 9, new GameEvent(GameEvent.Type.Resume));
+            returnToMenu.Load("MAIN MENU", (viewPort.Width - unit * 5) / 2, unit * 12, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
+            continueGame.Load("CONTINUE", (viewPort.Width - unit * 5) / 2, unit * 9, new GameEvent(GameEvent.Type.Resume));
             //var viewPort = Global.Instance.Graphics.Viewport;
             pauseScreen.Load(ResManager.Instance.PauseBackground,new Rectangle(0,0,viewPort.Width,viewPort.Height),Color.White);
-            setting.Load("Setting", (viewPort.Width - unit * 5) / 2, unit * 10 + unit / 2, new GameEvent(GameEvent.Type.SwitchView,(int)GameUI.ViewType.Setting));
+            setting.Load("SETTING", (viewPort.Width - unit * 5) / 2, unit * 10 + unit / 2, new GameEvent(GameEvent.Type.SwitchView,(int)GameUI.ViewType.Setting));
             gameOperator.Init();
         }
 
@@ -122,8 +122,15 @@ namespace BoomOffline.UI
                 {
                     bot.Draw(spriteBatch);
                 }
-
                 spriteBatch.End();
+
+                if (gameOperator.MiniMap.IsEnabled)
+                { 
+                    spriteBatch.Begin();
+                    gameOperator.MiniMap.Draw(spriteBatch);
+                    spriteBatch.End();
+                }
+                
             }
 
         }

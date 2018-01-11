@@ -49,6 +49,7 @@ namespace BoomOffline.UI
         private Button fight;
         private Button returnToMenu;
 
+        private TextEntity title;
         private TextEntity numOfBotsTitle;
         private TextEntity numOfBotsEntity;
         private int numOfBots;
@@ -79,6 +80,7 @@ namespace BoomOffline.UI
 
             background = new BasicEntity();
             
+            title = new TextEntity();
             playerTypeTitle = new TextEntity();
             player = new Character();
             fight = new Button();
@@ -116,12 +118,13 @@ namespace BoomOffline.UI
             };
 
             int leftSectionX = unit;
-            int leftSectionY = unit;
+            int leftSectionY = unit * 2 + unit / 2;
 
             background.Load(res.RoomBackground,new Rectangle(0,0,viewPort.Width,viewPort.Height),Color.White);
 
             selectedPlayer = roomSetting.PlayerType;
 
+            title.Load("WAITING ROOM", res.Font_2,new Vector2(viewPort.Width / 2, unit), Color.White, true);
             playerTypeTitle.Load("Player type", res.Font_1, new Vector2(leftSectionX, leftSectionY + unit / 2), Color.Yellow);
             playerInfo[0].Load(0, new Rectangle(leftSectionX + unit * 5, leftSectionY, unit * 2, unit * 2), 0, 0);
             playerInfo[1].Load(1, new Rectangle(leftSectionX + unit * 5, leftSectionY, unit * 2, unit * 2), 0, 0);
@@ -134,12 +137,12 @@ namespace BoomOffline.UI
 
             numOfBotsTitle.Load("Number of bots", res.Font_1, new Vector2(leftSectionX, leftSectionY + unit * 3), Color.Yellow);
             numOfBots = roomSetting.NumOfBot;
-            numOfBotsEntity.Load(roomSetting.NumOfBot.ToString(), res.Font_2, new Vector2(leftSectionX + unit * 6, leftSectionY + unit * 3), Color.Red);
+            numOfBotsEntity.Load(roomSetting.NumOfBot.ToString(), res.Font_2, new Vector2(leftSectionX + unit * 6, leftSectionY + unit * 3), Color.White);
             decreaseNumOfBots.Load(res.Minus, new Rectangle(leftSectionX + unit * 5, leftSectionY + unit * 3 + unit / 4, unit / 2, unit / 2), Color.White);
             increaseNumOfBots.Load(res.Plus, new Rectangle(leftSectionX + unit * 7, leftSectionY + unit * 3 + unit / 4, unit / 2, unit / 2), Color.White);
 
             int rightSectionX = viewPort.Width - unit * 9;
-            int rightSectionY = unit;
+            int rightSectionY = unit * 2 + unit / 2;
 
             selectedMap = mapInfo.ToList().FindIndex(curMap => curMap.MapName == roomSetting.MapName);
             map.Load(mapInfo[selectedMap].MapTexture, new Rectangle(rightSectionX + unit, rightSectionY, unit * 6, unit * 6), Color.White);
@@ -222,6 +225,7 @@ namespace BoomOffline.UI
         {
             background.Draw(spriteBatch);
 
+            title.Draw(spriteBatch);
             player.Draw(spriteBatch);
             previousPlayer.Draw(spriteBatch);
             nextPlayer.Draw(spriteBatch);

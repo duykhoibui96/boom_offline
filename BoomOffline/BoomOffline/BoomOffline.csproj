@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="Helper\GameResult.cs" />
+    <Compile Include="Helper\MiniMap.cs" />
     <Compile Include="Helper\PathNode.cs" />
     <Compile Include="Entity\BasicEntity.cs" />
     <Compile Include="Entity\Bomb.cs" />

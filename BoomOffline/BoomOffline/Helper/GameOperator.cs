@@ -14,6 +14,7 @@ namespace BoomOffline.Helper
     class GameOperator
     {
         private MapGenerator mapGenerator;
+        private MiniMap miniMap;
         private Character player;
         private List<Bomb> bombs;
         private Astar astar;
@@ -42,12 +43,19 @@ namespace BoomOffline.Helper
             set { bots = value; }
         }
 
+        public MiniMap MiniMap
+        {
+            get { return miniMap; }
+            set { miniMap = value; }
+        }
+
         public GameOperator()
         {
             player = new Character();
             Bots = new List<Character>();
             mapGenerator = MapGenerator.Instance;
             bombs = new List<Bomb>();
+            MiniMap = new MiniMap();
         }
 
         public void Init()
@@ -102,6 +110,8 @@ namespace BoomOffline.Helper
             }
                
             astar = new Astar(this);
+            if (RoomSetting.Instance.MapSize > 21)
+                miniMap.Load(MapGenerator.Instance.LogicMap, RoomSetting.Instance.MapSize);
         }
 
         public void Update(GameTime gameTime)
@@ -191,6 +201,8 @@ namespace BoomOffline.Helper
 
 
             bombs.Remove(bombs.Find(bomb => bomb.State == Bomb.BombState.End)); //Xóa các quả bom đã nổ
+            if (miniMap.IsEnabled)
+                miniMap.ApplyEntity(player,bots,bombs);
         }
 
         private void CheckPlayerMoving(Character character, bool isBot = false)

@@ -41,6 +41,7 @@ namespace BoomOffline.Resource
         public Texture2D RoomBackground;
         public Texture2D LoadingBackground;
         public Texture2D PauseBackground;
+        public Texture2D SettingBackground;
 
         public Texture2D Explosion;
 
@@ -87,6 +88,7 @@ namespace BoomOffline.Resource
             RoomBackground = contentManager.Load<Texture2D>("room_background");
             LoadingBackground = contentManager.Load<Texture2D>("loading_screen");
             PauseBackground = contentManager.Load<Texture2D>("pause");
+            SettingBackground = contentManager.Load<Texture2D>("setting_screen");
 
             Explosion = contentManager.Load<Texture2D>("explosion");
 

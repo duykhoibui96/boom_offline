@@ -14,8 +14,8 @@ namespace BoomOffline.Helper
 
         private static MapGenerator instance;
 
-        private const int TYPE_OBSTACLE = 1;
-        private const int TYPE_EMPTY = 0;
+        public const int TYPE_OBSTACLE = 1;
+        public const int TYPE_EMPTY = 0;
         private int count;
         private int startMapX, startMapY;
 
