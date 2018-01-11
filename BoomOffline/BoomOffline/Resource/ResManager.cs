@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -38,10 +39,17 @@ namespace BoomOffline.Resource
 
         public Texture2D Bomb;
         public Texture2D RoomBackground;
+        public Texture2D LoadingBackground;
 
         public Texture2D Explosion;
 
         public Texture2D Cursor;
+
+        public SoundEffect Win;
+        public SoundEffect Lose;
+        public SoundEffect BombExplosion;
+        public SoundEffect BackgroundMusic;
+        public SoundEffect Click;
 
         public static ResManager Instance
         {
@@ -74,6 +82,7 @@ namespace BoomOffline.Resource
 
             Bomb = contentManager.Load<Texture2D>("bomb");
             RoomBackground = contentManager.Load<Texture2D>("room_background");
+            LoadingBackground = contentManager.Load<Texture2D>("loading_screen");
 
             Explosion = contentManager.Load<Texture2D>("explosion");
 
@@ -90,6 +99,12 @@ namespace BoomOffline.Resource
             RandomMap = contentManager.Load<Texture2D>("random_map");
 
             Cursor = contentManager.Load<Texture2D>("cursor");
+
+            BackgroundMusic = contentManager.Load<SoundEffect>("background_music");
+            Win = contentManager.Load<SoundEffect>("win");
+            Lose = contentManager.Load<SoundEffect>("lose");
+            BombExplosion= contentManager.Load<SoundEffect>("bomb_03");
+            Click = contentManager.Load<SoundEffect>("click");
 
         }
 

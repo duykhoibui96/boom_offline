@@ -5,6 +5,7 @@ using System.Linq;
 using BoomOffline.Event;
 using BoomOffline.Input;
 using BoomOffline.Resource;
+using BoomOffline.Sound;
 using BoomOffline.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -60,6 +61,7 @@ namespace BoomOffline
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             ResManager.Instance.Load(Content);
+            SoundManager.Instance.PlayBackgroundMusic();
             gameUI = new Menu();
             gameUI.Load();
             // TODO: use this.Content to load your game content here

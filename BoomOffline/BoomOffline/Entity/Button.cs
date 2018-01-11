@@ -6,6 +6,7 @@ using BoomOffline.Event;
 using BoomOffline.Input;
 using BoomOffline.Model;
 using BoomOffline.Resource;
+using BoomOffline.Sound;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -41,6 +42,7 @@ namespace BoomOffline.Entity
                 text.TextColor = Color.White;
                 if (MouseEvent.Instance.IsLeftClick)
                 {
+                    SoundManager.Instance.PlaySound(SoundManager.SoundType.Click);
                     EventQueue.Instance.AddEvent(ev);
                 }
 

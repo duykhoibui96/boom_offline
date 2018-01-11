@@ -7,6 +7,7 @@ using System.Text;
 using BoomOffline.Helper;
 using BoomOffline.Model;
 using BoomOffline.Resource;
+using BoomOffline.Sound;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -82,6 +83,7 @@ namespace BoomOffline.Entity
                 this.state = value;
                 if (value == BombState.Explosion)
                 {
+                    SoundManager.Instance.PlaySound(SoundManager.SoundType.Explosion);
                     countDownTime = 0;
                     elapsedGameTime = 0;
                     state = BombState.Explosion;
@@ -136,6 +138,7 @@ namespace BoomOffline.Entity
                     {
                         elapsedGameTime = 0;
                         state = BombState.Explosion;
+                        SoundManager.Instance.PlaySound(SoundManager.SoundType.Explosion);
                         Explose();
                     }
                     break;
