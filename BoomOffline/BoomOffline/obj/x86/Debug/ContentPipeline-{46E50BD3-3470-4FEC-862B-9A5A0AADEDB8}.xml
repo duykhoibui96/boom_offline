@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_1.xnb</Output>
-      <Time>2018-01-09T19:18:13.5240548+07:00</Time>
+      <Time>2018-01-10T19:00:57.8299877+07:00</Time>
     </Item>
     <Item>
       <Source>font_2.spritefont</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\menu_background.xnb</Output>
-      <Time>2018-01-09T10:45:44.6851975+07:00</Time>
+      <Time>2018-01-10T19:00:57.8389937+07:00</Time>
     </Item>
     <Item>
       <Source>character_1.png</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\left_arrow.xnb</Output>
-      <Time>2018-01-09T19:18:13.5250555+07:00</Time>
+      <Time>2018-01-10T19:00:57.831989+07:00</Time>
     </Item>
     <Item>
       <Source>map.jpg</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\right_arrow.xnb</Output>
-      <Time>2018-01-09T19:18:13.5310595+07:00</Time>
+      <Time>2018-01-10T19:00:57.840995+07:00</Time>
     </Item>
     <Item>
       <Source>map_01.png</Source>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\map_01.xnb</Output>
-      <Time>2018-01-09T19:18:13.5270573+07:00</Time>
+      <Time>2018-01-10T19:00:57.8329897+07:00</Time>
     </Item>
     <Item>
       <Source>map_02.png</Source>
@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\map_02.xnb</Output>
-      <Time>2018-01-09T19:18:13.5280575+07:00</Time>
+      <Time>2018-01-10T19:00:57.8339904+07:00</Time>
     </Item>
     <Item>
       <Source>map_03.png</Source>
@@ -143,7 +143,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\map_03.xnb</Output>
-      <Time>2018-01-09T19:18:13.5280575+07:00</Time>
+      <Time>2018-01-10T19:00:57.8339904+07:00</Time>
     </Item>
     <Item>
       <Source>map_04.png</Source>
@@ -152,7 +152,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\map_04.xnb</Output>
-      <Time>2018-01-09T19:18:13.5290586+07:00</Time>
+      <Time>2018-01-10T19:00:57.834991+07:00</Time>
     </Item>
     <Item>
       <Source>minus.png</Source>
@@ -161,7 +161,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\minus.xnb</Output>
-      <Time>2018-01-09T19:18:13.5300588+07:00</Time>
+      <Time>2018-01-10T19:00:57.8389937+07:00</Time>
     </Item>
     <Item>
       <Source>plus.png</Source>
@@ -170,7 +170,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\plus.xnb</Output>
-      <Time>2018-01-09T19:18:13.5300588+07:00</Time>
+      <Time>2018-01-10T19:00:57.840995+07:00</Time>
     </Item>
     <Item>
       <Source>room_background.png</Source>
@@ -188,7 +188,34 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\font_3.xnb</Output>
-      <Time>2018-01-10T09:35:45.8409065+07:00</Time>
+      <Time>2018-01-10T19:00:57.8309883+07:00</Time>
+    </Item>
+    <Item>
+      <Source>cursor.png</Source>
+      <Name>cursor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\cursor.xnb</Output>
+      <Time>2018-01-10T19:00:57.8299877+07:00</Time>
+    </Item>
+    <Item>
+      <Source>button_container_2.png</Source>
+      <Name>button_container_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\button_container_2.xnb</Output>
+      <Time>2018-01-10T19:00:57.8289856+07:00</Time>
+    </Item>
+    <Item>
+      <Source>random_map.jpg</Source>
+      <Name>random_map</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Dai Hoc\DH nam tu\Game\DACK\BoomOfflineV3\BoomOffline\BoomOffline\bin\x86\Debug\Content\random_map.xnb</Output>
+      <Time>2018-01-11T09:36:06.5295694+07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

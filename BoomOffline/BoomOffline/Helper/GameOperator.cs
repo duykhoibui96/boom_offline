@@ -51,30 +51,56 @@ namespace BoomOffline.Helper
 
         public void Init()
         {
+            int i, j, flag = 0;
             int w, h, type;
             mapGenerator.GenerateMap();
-            player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[1, 1].Rect, 1, 1, true);
-            int divide = RoomSetting.Instance.MapSize / RoomSetting.Instance.NumOfBot;
 
             //Đọc dữ liệu từ UserSetting.Instance.NumOfBots để biết số con bot
-            for (int i = 0; i < RoomSetting.Instance.NumOfBot; i++)
+            if (RoomSetting.Instance.MapName != "random_map")
             {
-                //random position
-                do
+                player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[1, 1].Rect, 1, 1, true);
+                
+                int divide = RoomSetting.Instance.MapSize / RoomSetting.Instance.NumOfBot;
+                for (i = 0; i < RoomSetting.Instance.NumOfBot; i++)
                 {
-                    w = rand.Next(3, RoomSetting.Instance.MapSize - 3);
-                    h = rand.Next(divide * i, divide * i + divide);
-                } while (!mapGenerator.IsValidLocation(h, w));
+                    //random position
+                    do
+                    {
+                        w = rand.Next(3, RoomSetting.Instance.MapSize - 3);
+                        h = rand.Next(divide * i, divide * i + divide);
+                    } while (!mapGenerator.IsValidLocation(h, w));
 
-                do
-                {
-                    type = rand.Next(0, 3);
-                } while (type == RoomSetting.Instance.PlayerType);
+                    do
+                    {
+                        type = rand.Next(0, 3);
+                    } while (type == RoomSetting.Instance.PlayerType);
 
-                bots.Add(new Character());
-                bots[i].Load(type, mapGenerator.Map[h, w].Rect, h, w);
+                    bots.Add(new Character());
+                    bots[i].Load(type, mapGenerator.Map[h, w].Rect, h, w);
+                }
             }
-
+            else
+            {
+                for (i = 0; i < RoomSetting.Instance.MapSize; i++)
+                {
+                    for (j = 0; j < RoomSetting.Instance.MapSize; j++)
+                        if (mapGenerator.IsValidLocation(i, j))
+                        {
+                            player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[i, j].Rect, i, j, true);
+                            flag = 1;
+                            break;
+                        }
+                    if (flag == 1)
+                        break;
+                }
+                bots = RoomSetting.Instance.MyBot.Select(bot =>
+                {
+                    var newBot = new Character();
+                    newBot.Load(bot[2], mapGenerator.Map[bot[0], bot[1]].Rect, bot[0], bot[1]);
+                    return newBot;
+                }).ToList();
+            }
+               
             astar = new Astar(this);
         }
 
@@ -231,6 +257,11 @@ namespace BoomOffline.Helper
                    !bombs.Any(bomb => bomb.ExplosionArea.Any(area => area.X == i && area.Y == j));
         }
 
+        public bool IsValidMove(int i, int j)
+        {
+            return mapGenerator.IsValidLocation(i, j);
+        }
+
         private bool CheckValidBotPosition(Character curBot,int newI, int newJ)
         {
             return !bots.Any(bot => !bot.Equals(curBot) && bot.IsAlive && bot.NewI == newI && bot.NewJ == newJ);
@@ -264,7 +295,7 @@ namespace BoomOffline.Helper
             {
                 if (RoomSetting.Instance.MapSize == 21)
                 {
-                    ANode pos = astar.FindPath(this, new Vector2(c.I, c.J), new Vector2(player.I, player.J));
+                    ANode pos = astar.FindPath(this, new Vector2(c.J, c.I), new Vector2(player.J, player.I));
                     if (pos != null)
                         dir = nextCell(pos, c);
                     else
@@ -336,7 +367,7 @@ namespace BoomOffline.Helper
             {
                 if (RoomSetting.Instance.MapSize == 21)
                 {
-                    ANode pos = astar.FindPath(this, new Vector2(c.I, c.J), new Vector2(tempI, tempJ));
+                    ANode pos = astar.FindPath(this, new Vector2(c.J, c.I), new Vector2(tempJ, tempI));
                     if (pos != null)
                         return nextCell(pos, c);
                     return findNextMove(findPossibleMove(c, true), c, tempI, tempJ);
@@ -351,7 +382,7 @@ namespace BoomOffline.Helper
             int shortest, tempI, tempJ;
             shortest = 99999;
 
-            int dir = 0, distance = 0;
+            int dir = -1, distance = 0;
             for (int i = 1; i <= possibleMove.Length; i++)
             {
                 switch (possibleMove[i - 1])

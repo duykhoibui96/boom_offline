@@ -19,3 +19,6 @@ Content\minus.xnb
 Content\plus.xnb
 Content\room_background.xnb
 Content\font_3.xnb
+Content\cursor.xnb
+Content\button_container_2.xnb
+Content\random_map.xnb

@@ -24,6 +24,16 @@ namespace BoomOffline.Helper
             get { return mapSize; }
         }
 
+        public List<int[]>MyBot
+        {
+            get {
+                if (myBot == null)
+                    myBot = new List<int[]>();
+                return myBot; 
+            }
+            set { myBot = value; }
+        }
+
         public string MapName
         {
             get { return mapName; }
@@ -32,7 +42,7 @@ namespace BoomOffline.Helper
                 mapName = value; 
                 switch(mapName)
                 {
-                    case "map01.txt":
+                    case "map01.txt": case "random_map":
                         mapSize = 21;
                         break;
                     case "map02.txt":
@@ -44,6 +54,7 @@ namespace BoomOffline.Helper
                     case "map04.txt":
                         mapSize = 51;
                         break;
+
                 }
             }
         }
@@ -72,6 +83,7 @@ namespace BoomOffline.Helper
         private int numOfBots;
         private int mapSize;
         private int playerType;
+        private List<int[]> myBot;
 
     }
 }
