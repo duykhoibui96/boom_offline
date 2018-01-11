@@ -34,6 +34,22 @@ namespace BoomOffline.Sound
             set { instance = value; }
         }
 
+        public float MusicVolumn
+        {
+            get { return background.Volume; }
+            set { background.Volume = value; }
+        }
+
+        public float SoundVolumn
+        {
+            get
+            {
+                return soundVolumn;
+                
+            }
+            set { soundVolumn = value; }
+        }
+
         private SoundManager()
         {
             soundVolumn = 1;

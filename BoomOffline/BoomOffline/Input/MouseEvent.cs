@@ -41,6 +41,15 @@ namespace BoomOffline.Input
             }
         }
 
+        public bool IsHoldLeftMouse
+        {
+            get
+            {
+                return previousState.LeftButton == ButtonState.Pressed &&
+                       currentMouseState.LeftButton == ButtonState.Pressed;
+            }
+        }
+
         public void Update()
         {
             previousState = currentMouseState;
