@@ -10,7 +10,8 @@ namespace BoomOffline.Event
         public enum Type
         {
             SwitchView,
-            Exit
+            Exit,
+            Resume
         }
 
         private Type type;

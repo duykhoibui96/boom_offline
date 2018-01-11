@@ -15,7 +15,9 @@ namespace BoomOffline.UI
             Menu = 0,
             Room = 1,
             Match = 2,
-            Setting = 3
+            Setting = 3,
+            Loading = 4,
+            Result = 5
         }
         public abstract void Load();
         public abstract void HandleEvent();

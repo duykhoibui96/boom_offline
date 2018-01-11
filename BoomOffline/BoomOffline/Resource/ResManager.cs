@@ -40,6 +40,7 @@ namespace BoomOffline.Resource
         public Texture2D Bomb;
         public Texture2D RoomBackground;
         public Texture2D LoadingBackground;
+        public Texture2D PauseBackground;
 
         public Texture2D Explosion;
 
@@ -50,6 +51,8 @@ namespace BoomOffline.Resource
         public SoundEffect BombExplosion;
         public SoundEffect BackgroundMusic;
         public SoundEffect Click;
+
+        public Texture2D Control;
 
         public static ResManager Instance
         {
@@ -83,6 +86,7 @@ namespace BoomOffline.Resource
             Bomb = contentManager.Load<Texture2D>("bomb");
             RoomBackground = contentManager.Load<Texture2D>("room_background");
             LoadingBackground = contentManager.Load<Texture2D>("loading_screen");
+            PauseBackground = contentManager.Load<Texture2D>("pause");
 
             Explosion = contentManager.Load<Texture2D>("explosion");
 
@@ -105,6 +109,8 @@ namespace BoomOffline.Resource
             Lose = contentManager.Load<SoundEffect>("lose");
             BombExplosion= contentManager.Load<SoundEffect>("bomb_03");
             Click = contentManager.Load<SoundEffect>("click");
+
+            Control = contentManager.Load<Texture2D>("control");
 
         }
 

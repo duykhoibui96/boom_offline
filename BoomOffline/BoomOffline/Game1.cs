@@ -119,6 +119,12 @@ namespace BoomOffline
                         case (int)GameUI.ViewType.Match:
                             gameUI = new Match();
                             break;
+                        case (int)GameUI.ViewType.Loading:
+                            gameUI = new Loading();
+                            break;
+                        case (int)GameUI.ViewType.Setting:
+                            gameUI = new Setting();
+                            break;
                     }
                     gameUI.Load();
                     EventQueue.Instance.Next();

@@ -146,7 +146,7 @@ namespace BoomOffline.UI
             previousMap.Load(res.LeftArrow, new Rectangle(rightSectionX - 5, rightSectionY + unit * 2 + unit / 2, unit, unit), Color.White);
             nextMap.Load(res.RightArrow, new Rectangle(rightSectionX + unit * 7 + 5, rightSectionY + unit * 2 + unit / 2, unit, unit), Color.White);
 
-            fight.Load("FIGHT", rightSectionX + unit + unit / 2, rightSectionY + unit * 7, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Match));
+            fight.Load("FIGHT", rightSectionX + unit + unit / 2, rightSectionY + unit * 7, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Loading));
             returnToMenu.Load("RETURN TO MENU", rightSectionX + unit + unit / 2, rightSectionY + unit * 8 + unit / 2, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
 
         }

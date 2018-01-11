@@ -97,8 +97,9 @@
     <Compile Include="UI\GameUI.cs" />
     <Compile Include="UI\Match.cs" />
     <Compile Include="UI\Menu.cs" />
-    <Compile Include="UI\Setting.cs" />
+    <Compile Include="UI\Loading.cs" />
     <Compile Include="UI\Room.cs" />
+    <Compile Include="UI\Setting.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

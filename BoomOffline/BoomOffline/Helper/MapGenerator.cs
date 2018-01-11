@@ -12,6 +12,8 @@ namespace BoomOffline.Helper
     class MapGenerator
     {
 
+        private static MapGenerator instance;
+
         private const int TYPE_OBSTACLE = 1;
         private const int TYPE_EMPTY = 0;
         private int count;
@@ -29,6 +31,22 @@ namespace BoomOffline.Helper
         {
             get { return logicMap; }
             set { logicMap = value; }
+        }
+
+        public static MapGenerator Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new MapGenerator();
+                return instance;
+            }
+            set { instance = value; }
+        }
+
+        private MapGenerator()
+        {
+
         }
 
         public Point GetRealPosition(int i, int j)
@@ -191,37 +209,14 @@ namespace BoomOffline.Helper
             return randoms.OrderBy(x => rand.Next()).ToArray();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public void GenerateMap()
         {
             GenerateLogicMap(RoomSetting.Instance.MapName);
             map = new BasicEntity[LogicMap.Length, LogicMap[0].Length];
             var unit = Global.Instance.GameUnit;
             var viewPort = Global.Instance.Graphics.Viewport;
-            int startMapX = 25;
-            int startMapY = 25;
+            int startMapX = 10;
+            int startMapY = 10;
 
             int mapSize = RoomSetting.Instance.MapSize;
 

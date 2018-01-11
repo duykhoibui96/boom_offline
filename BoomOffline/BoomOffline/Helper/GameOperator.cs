@@ -45,7 +45,7 @@ namespace BoomOffline.Helper
         {
             player = new Character();
             Bots = new List<Character>();
-            mapGenerator = new MapGenerator();
+            mapGenerator = MapGenerator.Instance;
             bombs = new List<Bomb>();
         }
 
@@ -53,7 +53,6 @@ namespace BoomOffline.Helper
         {
             int i, j, flag = 0;
             int w, h, type;
-            mapGenerator.GenerateMap();
 
             //Đọc dữ liệu từ UserSetting.Instance.NumOfBots để biết số con bot
             if (RoomSetting.Instance.MapName != "random_map")
