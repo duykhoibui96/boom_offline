@@ -17,7 +17,6 @@ namespace BoomOffline.UI
     class Match : GameUI
     {
         private GameOperator gameOperator;
-        private Button returnToMenu;
 
         private SpriteBatch spriteBatch;
 
@@ -26,7 +25,6 @@ namespace BoomOffline.UI
         public Match()
         {
             gameOperator = new GameOperator();
-            returnToMenu = new Button();
             spriteBatch = new SpriteBatch(Global.Instance.Graphics);
         }
 
@@ -37,8 +35,6 @@ namespace BoomOffline.UI
             //var viewPort = Global.Instance.Graphics.Viewport;
             var unit = Global.Instance.Unit;
             gameOperator.Init();
-            //returnToMenu.Load("RETURN TO MENU", viewPort.Width - unit * 5, unit, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
-            returnToMenu.Load("RETURN TO MENU", 20, 20, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
         }
 
         public override void HandleEvent()
@@ -51,7 +47,6 @@ namespace BoomOffline.UI
             base.Update(gameTime);
             camera.Update(gameTime);
             gameOperator.Update(gameTime);
-            returnToMenu.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
@@ -82,7 +77,6 @@ namespace BoomOffline.UI
             {
                 bot.Draw(spriteBatch);
             }
-            returnToMenu.Draw(spriteBatch);
 
             spriteBatch.End();
         }

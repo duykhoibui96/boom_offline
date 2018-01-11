@@ -74,18 +74,18 @@ namespace BoomOffline
             var currentMouseState = Input.MouseEvent.Instance.currentMouseState;
             var previousMouseState = Input.MouseEvent.Instance.previousState;
 
-            if (currentMouseState.LeftButton == ButtonState.Pressed)
-            {
-                var offsetX = previousMouseState.X - currentMouseState.X;
-                var offsetY = previousMouseState.Y - currentMouseState.Y;
+            //if (currentMouseState.LeftButton == ButtonState.Pressed)
+            //{
+            //    var offsetX = previousMouseState.X - currentMouseState.X;
+            //    var offsetY = previousMouseState.Y - currentMouseState.Y;
 
-                Vector2 movement = Vector2.Zero;
+            //    Vector2 movement = Vector2.Zero;
 
-                movement.X += offsetX / Zoom;
-                movement.Y += offsetY / Zoom;
+            //    movement.X += offsetX / Zoom;
+            //    movement.Y += offsetY / Zoom;
 
-                Move(movement);
-            }
+            //    Move(movement);
+            //}
 
 
             /*if (previousMouseState.ScrollWheelValue < currentMouseState.ScrollWheelValue)

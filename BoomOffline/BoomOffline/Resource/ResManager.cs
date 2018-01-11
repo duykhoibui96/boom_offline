@@ -29,6 +29,7 @@ namespace BoomOffline.Resource
         public Texture2D Map_2;
         public Texture2D Map_3;
         public Texture2D Map_4;
+        public Texture2D RandomMap;
 
         public Texture2D LeftArrow;
         public Texture2D RightArrow;
@@ -86,6 +87,7 @@ namespace BoomOffline.Resource
             Map_2 = contentManager.Load<Texture2D>("map_02");
             Map_3 = contentManager.Load<Texture2D>("map_03");
             Map_4 = contentManager.Load<Texture2D>("map_04");
+            RandomMap = contentManager.Load<Texture2D>("random_map");
 
             Cursor = contentManager.Load<Texture2D>("cursor");
 

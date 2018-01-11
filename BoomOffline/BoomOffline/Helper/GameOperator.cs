@@ -52,7 +52,7 @@ namespace BoomOffline.Helper
         public void Init()
         {
             int w, h, type;
-            mapGenerator.GenerateMap(25, 25);
+            mapGenerator.GenerateMap();
             player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[1, 1].Rect, 1, 1, true);
             int divide = RoomSetting.Instance.MapSize / RoomSetting.Instance.NumOfBot;
 

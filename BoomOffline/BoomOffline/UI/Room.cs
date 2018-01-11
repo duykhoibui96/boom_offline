@@ -111,7 +111,8 @@ namespace BoomOffline.UI
                 new MapInfo("map01.txt", res.Map_1),
                 new MapInfo("map02.txt", res.Map_2),
                 new MapInfo("map03.txt", res.Map_3),
-                new MapInfo("map04.txt", res.Map_4)
+                new MapInfo("map04.txt", res.Map_4),
+                new MapInfo("random_map", res.RandomMap), 
             };
 
             int leftSectionX = unit;
@@ -169,7 +170,7 @@ namespace BoomOffline.UI
             {
                 selectedMap--;
                 if (selectedMap == -1)
-                    selectedMap = 3;
+                    selectedMap = 4;
                 RoomSetting.Instance.MapName = mapInfo[selectedMap].MapName;
                 map.CurTexture = mapInfo[selectedMap].MapTexture;
 
@@ -177,7 +178,7 @@ namespace BoomOffline.UI
             else if (mouseEvent.IsHover(nextMap.Rect) && isLeftClick)
             {
                 selectedMap++;
-                if (selectedMap == 4)
+                if (selectedMap == 5)
                     selectedMap = 0;
                 RoomSetting.Instance.MapName = mapInfo[selectedMap].MapName;
                 map.CurTexture = mapInfo[selectedMap].MapTexture;

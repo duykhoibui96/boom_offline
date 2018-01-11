@@ -36,25 +36,40 @@ namespace BoomOffline.Helper
 
         private void GenerateLogicMap(string map)
         {
-            List<int[]> grid = new List<int[]>();
-            string[] lines = System.IO.File.ReadAllLines(@map);
-            foreach (string line in lines)
+            if (map == "random_map")
             {
-                string[] tokens = line.Split('\t');
-                grid.Add(tokens.Select(token => Int32.Parse(token)).ToArray());
-            }
 
-            LogicMap = grid.ToArray();
+            }
+            else
+            {
+                List<int[]> grid = new List<int[]>();
+                string[] lines = System.IO.File.ReadAllLines(@map);
+                foreach (string line in lines)
+                {
+                    string[] tokens = line.Split('\t');
+                    grid.Add(tokens.Select(token => Int32.Parse(token)).ToArray());
+                }
+
+                LogicMap = grid.ToArray();
+            }
 
         }
 
-        public void GenerateMap(int startX, int startY)
+        public void GenerateMap()
         {
             GenerateLogicMap(RoomSetting.Instance.MapName);
             map = new BasicEntity[LogicMap.Length, LogicMap[0].Length];
             var unit = Global.Instance.GameUnit;
-            int startMapX = 300;  //25->300
+            var viewPort = Global.Instance.Graphics.Viewport;
+            int startMapX = 25;
             int startMapY = 25;
+
+            int mapSize = RoomSetting.Instance.MapSize;
+
+            if (mapSize * unit < viewPort.Width)
+            {
+                startMapX = (viewPort.Width - unit * mapSize) / 2;
+            }
 
             Texture2D obstacle = new Texture2D(Global.Instance.Graphics, 1, 1);
             obstacle.SetData(new Color[] { Color.Brown });
