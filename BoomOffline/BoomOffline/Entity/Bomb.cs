@@ -36,6 +36,12 @@ namespace BoomOffline.Entity
         private AnimationSprite sprite;
         private int elapsedGameTime;
         private int countDownTime;
+
+        public int CountDownTime
+        {
+            get { return countDownTime; }
+            set { countDownTime = value; }
+        }
         private int explosionLevelIncreaseTime;
 
         private bool canExplosionToLeft;

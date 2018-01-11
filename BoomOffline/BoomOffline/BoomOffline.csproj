@@ -93,6 +93,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Resource\Global.cs" />
     <Compile Include="Resource\ResManager.cs" />
+    <Compile Include="SoundManager.cs" />
     <Compile Include="UI\GameUI.cs" />
     <Compile Include="UI\Match.cs" />
     <Compile Include="UI\Menu.cs" />

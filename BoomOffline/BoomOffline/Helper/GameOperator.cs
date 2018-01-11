@@ -254,7 +254,7 @@ namespace BoomOffline.Helper
         public bool IsPossibleMove(int i, int j)
         {
             return mapGenerator.IsValidLocation(i, j) &&
-                   !bombs.Any(bomb => bomb.ExplosionArea.Any(area => area.X == i && area.Y == j));
+                   !bombs.Any(bomb => bomb.CountDownTime < 1000 && bomb.ExplosionArea.Any(area => area.X == i && area.Y == j));
         }
 
         public bool IsValidMove(int i, int j)
