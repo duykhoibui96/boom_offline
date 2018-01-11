@@ -30,6 +30,7 @@ namespace BoomOffline
             _rotation = 0.0f;
             startPos = new Vector2(graphicsDevice.Viewport.Width / 2, graphicsDevice.Viewport.Height / 2);
             _pos = new Vector2(graphicsDevice.Viewport.Width / 2, graphicsDevice.Viewport.Height / 2);
+            RoomSetting.Instance.PlusPosCam = new Vector2(0, 0);
         }
 
         public float Zoom
@@ -56,17 +57,36 @@ namespace BoomOffline
         public Vector2 Pos
         {
             get { return _pos; }
-            set { _pos = value; }
+            set 
+            { 
+                _pos = value;
+                RoomSetting.Instance.PosCam = value;
+            }
         }
 
         public Matrix GetTransformation()
         {
-            int posCam = 0;
+            Console.WriteLine("new pos: " + _pos.X + " " + _pos.Y);
+            Console.WriteLine("old pos: " + RoomSetting.Instance.PosCam.X + " " + RoomSetting.Instance.PosCam.Y);
+            Console.WriteLine("plus: " + RoomSetting.Instance.PlusPosCam.X + " " + RoomSetting.Instance.PlusPosCam.Y);
+
+            int ratio = 2, limit = 200;
             if (RoomSetting.Instance.MapSize != 21)
-                posCam = 150;
+            {
+                if (_pos.X - RoomSetting.Instance.PosCam.X > 0 && RoomSetting.Instance.PlusPosCam.X <= limit)
+                    RoomSetting.Instance.PlusPosCam = new Vector2(RoomSetting.Instance.PlusPosCam.X + ratio, RoomSetting.Instance.PlusPosCam.Y);
+                else if (_pos.X - RoomSetting.Instance.PosCam.X < 0 && RoomSetting.Instance.PlusPosCam.X > 10)
+                    RoomSetting.Instance.PlusPosCam = new Vector2(RoomSetting.Instance.PlusPosCam.X - ratio, RoomSetting.Instance.PlusPosCam.Y);
+                else if (_pos.Y - RoomSetting.Instance.PosCam.Y > 0 && RoomSetting.Instance.PlusPosCam.Y <= limit)
+                    RoomSetting.Instance.PlusPosCam = new Vector2(RoomSetting.Instance.PlusPosCam.X, RoomSetting.Instance.PlusPosCam.Y + ratio);
+                else if (_pos.Y - RoomSetting.Instance.PosCam.Y < 0 && RoomSetting.Instance.PlusPosCam.Y > 10)
+                    RoomSetting.Instance.PlusPosCam = new Vector2(RoomSetting.Instance.PlusPosCam.X, RoomSetting.Instance.PlusPosCam.Y - ratio);
+
+                RoomSetting.Instance.PosCam = _pos;
+            }
             var graphicsDevice = Resource.Global.Instance.Graphics;
             _transform =
-              Matrix.CreateTranslation(new Vector3(-_pos.X + posCam, -_pos.Y + posCam, 0)) *
+              Matrix.CreateTranslation(new Vector3(-_pos.X + RoomSetting.Instance.PlusPosCam.X, -_pos.Y + RoomSetting.Instance.PlusPosCam.Y, 0)) *
                                          Matrix.CreateRotationZ(Rotation) *
                                          Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) *
                                          Matrix.CreateTranslation(new Vector3(graphicsDevice.Viewport.Width * 0.5f, graphicsDevice.Viewport.Height * 0.5f, 0));

@@ -89,12 +89,15 @@ namespace BoomOffline.UI
             }
             else
             {
-                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
-                null,
-                null,
-                null,
-                null,
-                camera.GetTransformation());
+                if (RoomSetting.Instance.MapSize == 21)
+                    spriteBatch.Begin();
+                else
+                    spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+                    null,
+                    null,
+                    null,
+                    null,
+                    camera.GetTransformation());
 
                 var map = gameOperator.Map;
                 for (int i = 0; i < map.GetLength(0); i++)

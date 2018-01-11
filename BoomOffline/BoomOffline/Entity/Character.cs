@@ -123,12 +123,13 @@ namespace BoomOffline.Entity
             if (isPlayer)
             {
                 var unit = Global.Instance.GameUnit;
+                var map = MapGenerator.Instance;
                 playerName = new TextEntity();
                 playerName.Load("YOU", ResManager.Instance.Font_3, new Vector2(rect.X + unit / 2, rect.Y - unit / 2), Color.White, true);
                 //For camera
-                int map_x = 300, map_y = 25;
-                max_cam_wid = Global.Instance.map_size.X - (1024 - map_x);
-                max_cam_hei = Global.Instance.map_size.Y - (650 - map_y);
+                int map_x = map.StartMapX, map_y = map.StartMapY;
+                max_cam_wid = RoomSetting.Instance.MapSize * unit - (1024 - map_x) + 200;
+                max_cam_hei = RoomSetting.Instance.MapSize * unit - (650 - map_y) +200;
                 cur_cam_wid = 0;
                 cur_cam_hei = 0;
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace BoomOffline.Helper
 {
@@ -56,6 +57,8 @@ namespace BoomOffline.Helper
                         break;
 
                 }
+                plusPosCam.X = 0;
+                plusPosCam.Y = 0;
             }
         }
 
@@ -71,6 +74,18 @@ namespace BoomOffline.Helper
             set { playerType = value; }
         }
 
+        public Vector2 PosCam
+        {
+            get { return posCam; }
+            set { posCam = value; }
+        }
+
+        public Vector2 PlusPosCam
+        {
+            get { return plusPosCam; }
+            set { plusPosCam = value; }
+        }
+
         private RoomSetting()
         {
             mapName = "map01.txt";
@@ -84,6 +99,7 @@ namespace BoomOffline.Helper
         private int mapSize;
         private int playerType;
         private List<int[]> myBot;
-
+        private Vector2 posCam;
+        private Vector2 plusPosCam;
     }
 }

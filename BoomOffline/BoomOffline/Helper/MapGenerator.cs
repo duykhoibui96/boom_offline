@@ -17,6 +17,19 @@ namespace BoomOffline.Helper
         private const int TYPE_OBSTACLE = 1;
         private const int TYPE_EMPTY = 0;
         private int count;
+        private int startMapX, startMapY;
+
+        public int StartMapY
+        {
+            get { return startMapY; }
+            set { startMapY = value; }
+        }
+
+        public int StartMapX
+        {
+            get { return startMapX; }
+            set { startMapX = value; }
+        }
         Random rand = new Random();
 
         public BasicEntity[,] map;
@@ -215,8 +228,8 @@ namespace BoomOffline.Helper
             map = new BasicEntity[LogicMap.Length, LogicMap[0].Length];
             var unit = Global.Instance.GameUnit;
             var viewPort = Global.Instance.Graphics.Viewport;
-            int startMapX = 10;
-            int startMapY = 10;
+            startMapX = 10;
+            startMapY = 10;
 
             int mapSize = RoomSetting.Instance.MapSize;
 
