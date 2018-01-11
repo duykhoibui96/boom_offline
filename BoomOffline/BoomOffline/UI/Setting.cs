@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Resources;
 using System.Text;
 using BoomOffline.Entity;
+using BoomOffline.Event;
 using BoomOffline.Input;
 using BoomOffline.Model;
 using BoomOffline.Resource;
@@ -114,21 +116,55 @@ namespace BoomOffline.UI
 
         private VolumnControl musicControl;
         private VolumnControl soundControl;
+        private Button apply;
+        private Button cancel;
+
 
         public Setting()
         {
             musicControl = new VolumnControl();
             soundControl = new VolumnControl();
+            apply = new Button();
+            cancel = new Button();
         }
 
         public override void Load()
         {
-           musicControl.Load(100,100,VolumnControl.Type.Music);
-           soundControl.Load(100,200,VolumnControl.Type.Sound);
+            SoundManager.Instance.Backup();
+            musicControl.Load(100, 100, VolumnControl.Type.Music);
+            soundControl.Load(100, 200, VolumnControl.Type.Sound);
+            var viewPort = Global.Instance.Graphics.Viewport;
+            var unit = Global.Instance.Unit;
+            apply.Load("APPLY", (viewPort.Width - unit * 11) / 2, 300, new GameEvent(GameEvent.Type.ApplySetting));
+            cancel.Load("CANCEL", (viewPort.Width - unit * 11) / 2 + unit * 6, 300, new GameEvent(GameEvent.Type.CancelSetting));
         }
 
         public override void HandleEvent()
         {
+            var ev = EventQueue.Instance.CheckCurrentEvent();
+
+            if (ev != null)
+            {
+                bool isEventTriggered = true;
+                switch (ev.EventType)
+                {
+                    case GameEvent.Type.ApplySetting:
+                        break;
+                    case GameEvent.Type.CancelSetting:
+                        SoundManager.Instance.Recover();
+                        break;
+                    default:
+                        isEventTriggered = false;
+                        break;
+                }
+
+                if (isEventTriggered)
+                {
+                    EventQueue.Instance.AddEvent(new GameEvent(GameEvent.Type.ResumeView));
+                    EventQueue.Instance.Next();
+                }
+                    
+            }
 
         }
 
@@ -137,12 +173,16 @@ namespace BoomOffline.UI
             base.Update(gameTime);
             musicControl.Update(gameTime);
             soundControl.Update(gameTime);
+            apply.Update(gameTime);
+            cancel.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             musicControl.Draw(spriteBatch);
             soundControl.Draw(spriteBatch);
+            apply.Draw(spriteBatch);
+            cancel.Draw(spriteBatch);
         }
     }
 }

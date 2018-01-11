@@ -11,7 +11,10 @@ namespace BoomOffline.Event
         {
             SwitchView,
             Exit,
-            Resume
+            Resume,
+            ApplySetting,
+            CancelSetting,
+            ResumeView
         }
 
         private Type type;

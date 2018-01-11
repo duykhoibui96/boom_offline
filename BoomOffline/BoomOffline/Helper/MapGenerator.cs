@@ -226,9 +226,9 @@ namespace BoomOffline.Helper
             }
 
             Texture2D obstacle = new Texture2D(Global.Instance.Graphics, 1, 1);
-            obstacle.SetData(new Color[] { Color.Brown });
+            obstacle.SetData(new Color[] { Color.Gray });
             Texture2D empty = new Texture2D(Global.Instance.Graphics, 1, 1);
-            obstacle.SetData(new Color[] { Color.Green });
+            empty.SetData(new Color[] { Color.Green });
 
             for (int i = 0; i < LogicMap.Length; i++)
             {

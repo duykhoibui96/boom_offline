@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="Helper\GameResult.cs" />
     <Compile Include="Helper\PathNode.cs" />
     <Compile Include="Entity\BasicEntity.cs" />
     <Compile Include="Entity\Bomb.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="UI\Match.cs" />
     <Compile Include="UI\Menu.cs" />
     <Compile Include="UI\Loading.cs" />
+    <Compile Include="UI\Result.cs" />
     <Compile Include="UI\Room.cs" />
     <Compile Include="UI\Setting.cs" />
   </ItemGroup>

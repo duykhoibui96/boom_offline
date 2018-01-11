@@ -25,6 +25,7 @@ namespace BoomOffline
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private GameUI disabledUI;
         private GameUI gameUI;
 
         public Game1()
@@ -32,7 +33,7 @@ namespace BoomOffline
             graphics = new GraphicsDeviceManager(this)
             {
                 PreferredBackBufferWidth = 1024,
-                PreferredBackBufferHeight = 650
+                PreferredBackBufferHeight = 670
             };
             //IsMouseVisible = true;
             Content.RootDirectory = "Content";
@@ -123,10 +124,19 @@ namespace BoomOffline
                             gameUI = new Loading();
                             break;
                         case (int)GameUI.ViewType.Setting:
+                            disabledUI = gameUI;
                             gameUI = new Setting();
+                            break;
+                        case (int)GameUI.ViewType.Result:
+                            gameUI = new Result();
                             break;
                     }
                     gameUI.Load();
+                    EventQueue.Instance.Next();
+                }
+                else if (ev.EventType == GameEvent.Type.ResumeView)
+                {
+                    gameUI = disabledUI;
                     EventQueue.Instance.Next();
                 }
             }

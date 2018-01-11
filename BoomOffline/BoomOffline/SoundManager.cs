@@ -19,6 +19,9 @@ namespace BoomOffline.Sound
             Lose
         }
 
+        private float backupMusicVolumn;
+        private float backupSoundVolumn;
+
         private static SoundManager instance;
         private float soundVolumn;
         private SoundEffectInstance background;
@@ -54,13 +57,25 @@ namespace BoomOffline.Sound
         {
             soundVolumn = 1;
             background = ResManager.Instance.BackgroundMusic.CreateInstance();
-            background.Volume = 0.5f;
+            background.Volume = 0.2f;
             background.IsLooped = true;
         }
 
         public void PlayBackgroundMusic()
         {
             background.Play();
+        }
+
+        public void Backup()
+        {
+            backupMusicVolumn = background.Volume;
+            backupSoundVolumn = soundVolumn;
+        }
+
+        public void Recover()
+        {
+            background.Volume = backupMusicVolumn;
+            soundVolumn = backupSoundVolumn;
         }
 
         public void PlaySound(SoundType type)
