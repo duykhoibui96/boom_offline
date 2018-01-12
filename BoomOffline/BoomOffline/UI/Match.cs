@@ -24,7 +24,10 @@ namespace BoomOffline.UI
         private Button returnToMenu;
         private Button continueGame;
         private Button setting;
+        private Button save;
         private Camera camera;
+        private TextEntity playerOneInstruction;
+        private TextEntity playerTwoInstruction;
         private bool isPause;
 
         public Match()
@@ -34,7 +37,10 @@ namespace BoomOffline.UI
             returnToMenu = new Button();
             continueGame = new Button();
             setting = new Button();
+            save = new Button();
             pauseScreen = new BasicEntity();
+            playerOneInstruction = new TextEntity();
+            playerTwoInstruction = new TextEntity();
         }
 
         public override void Load()
@@ -42,12 +48,21 @@ namespace BoomOffline.UI
             var viewPort = Global.Instance.Graphics.Viewport;
             var unit = Global.Instance.Unit;
             camera = new Camera();
+            if (MatchStorage.Instance.NeedToLoadDataHere && MatchStorage.Instance.CameraData != null)
+            {
+                var cameraData = MatchStorage.Instance.CameraData;
+                var data = cameraData.Split(' ').Select(curData => Double.Parse(curData)).ToArray();
+                camera._pos = new Vector2((float) data[0],(float) data[1]);
+            }
             Global.Instance.currentCamera = camera;
-            returnToMenu.Load("MAIN MENU", (viewPort.Width - unit * 5) / 2, unit * 12, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
-            continueGame.Load("CONTINUE", (viewPort.Width - unit * 5) / 2, unit * 9, new GameEvent(GameEvent.Type.Resume));
+            returnToMenu.Load("MAIN MENU", (viewPort.Width - unit * 5) / 2, unit * 9, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
+            continueGame.Load("CONTINUE", (viewPort.Width - unit * 5) / 2, unit * 5, new GameEvent(GameEvent.Type.Resume));
             //var viewPort = Global.Instance.Graphics.Viewport;
             pauseScreen.Load(ResManager.Instance.PauseBackground,new Rectangle(0,0,viewPort.Width,viewPort.Height),Color.White);
-            setting.Load("SETTING", (viewPort.Width - unit * 5) / 2, unit * 10 + unit / 2, new GameEvent(GameEvent.Type.SwitchView,(int)GameUI.ViewType.Setting));
+            setting.Load("SETTING", (viewPort.Width - unit * 5) / 2, unit * 7, new GameEvent(GameEvent.Type.SwitchView,(int)GameUI.ViewType.Setting));
+            save.Load("SAVE", (viewPort.Width - unit * 5) / 2, unit * 3, new GameEvent(GameEvent.Type.Save));
+            playerOneInstruction.Load("Player 2:\nW,S,A,D + LShift",ResManager.Instance.Font_1,new Vector2(10,200),Color.Red);
+            playerTwoInstruction.Load("Player 1:\nArrows + RShift", ResManager.Instance.Font_1, new Vector2(viewPort.Width - 185, 200), Color.Red);
             gameOperator.Init();
         }
 
@@ -55,11 +70,21 @@ namespace BoomOffline.UI
         {
             var ev = EventQueue.Instance.CheckCurrentEvent();
 
-            if (ev != null && ev.EventType == GameEvent.Type.Resume)
+            if (ev != null)
             {
-                isPause = false;
-                EventQueue.Instance.Next();
+                if (ev.EventType == GameEvent.Type.Resume)
+                {
+                    isPause = false;
+                    EventQueue.Instance.Next();
+                }
+                else if (ev.EventType == GameEvent.Type.Save)
+                {
+                    MatchStorage.Instance.Save(gameOperator.Player, gameOperator.Bots, gameOperator.Bombs);
+                    EventQueue.Instance.Next();
+                    EventQueue.Instance.AddEvent(new GameEvent(GameEvent.Type.OpenDialog, 0, "You saved the match!"));
+                }
             }
+           
         }
 
         public override void Update(GameTime gameTime)
@@ -75,9 +100,12 @@ namespace BoomOffline.UI
                 returnToMenu.Update(gameTime);
                 continueGame.Update(gameTime);
                 setting.Update(gameTime);
+                if (!gameOperator.IsMultiplayer)
+                    save.Update(gameTime);
             }      
             else
                 gameOperator.Update(gameTime);
+            
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
@@ -89,6 +117,8 @@ namespace BoomOffline.UI
                 continueGame.Draw(spriteBatch);
                 returnToMenu.Draw(spriteBatch);
                 setting.Draw(spriteBatch);
+                if (!gameOperator.IsMultiplayer)
+                    save.Draw(spriteBatch);
                 spriteBatch.End();
             }
             else
@@ -139,8 +169,19 @@ namespace BoomOffline.UI
                     gameOperator.MiniMap.Draw(spriteBatch);
                     spriteBatch.End();
                 }
+
+                if (gameOperator.IsMultiplayer)
+                {
+                    spriteBatch.Begin();
+                    playerOneInstruction.Draw(spriteBatch);
+                    playerTwoInstruction.Draw(spriteBatch);
+                    spriteBatch.End();
+                }
                 
             }
+
+            
+         
 
         }
     }

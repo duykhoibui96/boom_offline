@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -30,6 +31,7 @@ namespace BoomOffline.Entity
         private Rectangle curRect;
         private Rectangle newRect;
         private TextEntity playerName;
+        private int playerTypeSprite;
 
         private AnimationSprite[] sprites;
         private int currentSprite;
@@ -133,6 +135,7 @@ namespace BoomOffline.Entity
 
         public void Load(int playerType, Rectangle rect, int i, int j, string playerName = null)
         {
+            playerTypeSprite = playerType;
             isPlayer = playerName != null;
             if (isPlayer)
             {
@@ -143,7 +146,7 @@ namespace BoomOffline.Entity
                 //For camera
                 int map_x = map.StartMapX, map_y = map.StartMapY;
                 max_cam_wid = RoomSetting.Instance.MapSize * unit - (1024 - map_x) + 200;
-                max_cam_hei = RoomSetting.Instance.MapSize * unit - (650 - map_y) +200;
+                max_cam_hei = RoomSetting.Instance.MapSize * unit - (650 - map_y) + 200;
                 cur_cam_wid = 0;
                 cur_cam_hei = 0;
             }
@@ -307,7 +310,7 @@ namespace BoomOffline.Entity
                         cur_cam_hei = 0;
                     }
 
-                    if(cur_cam_hei > 0 && cur_cam_hei < max_cam_hei)
+                    if (cur_cam_hei > 0 && cur_cam_hei < max_cam_hei)
                         vector_move.Y = -2;
                     break;
                 case 'd':
@@ -317,7 +320,7 @@ namespace BoomOffline.Entity
                         cur_cam_hei = max_cam_hei;
                     }
 
-                    if(cur_cam_hei > 0 && cur_cam_hei < max_cam_hei)
+                    if (cur_cam_hei > 0 && cur_cam_hei < max_cam_hei)
                         vector_move.Y = 2;
                     break;
                 case 'l':
@@ -342,6 +345,24 @@ namespace BoomOffline.Entity
                     break;
             }
             Global.Instance.currentCamera.Move(vector_move);
+        }
+
+        public void Save(StreamWriter file)
+        {
+            file.WriteLine((isPlayer ? "player" : "bot") + " " + playerTypeSprite + " " + i + " " + j + " " + cur_cam_wid + " " + cur_cam_hei + " " + max_cam_wid + " " + max_cam_hei);
+        }
+
+        public void LoadData(string s)
+        {
+            var data = s.Split(' ');
+            var playerName = data[0] == "player" ? "YOU" : null;
+            var playerTypeSprite = Int32.Parse(data[1]);
+            int i = Int32.Parse(data[2]), j = Int32.Parse(data[3]);
+            Load(playerTypeSprite, MapGenerator.Instance.Map[i, j].Rect, i, j, playerName);
+            cur_cam_wid = Int32.Parse(data[4]);
+            cur_cam_hei = Int32.Parse(data[5]);
+            max_cam_wid = Int32.Parse(data[6]);
+            max_cam_hei = Int32.Parse(data[7]);
         }
     }
 }

@@ -90,26 +90,41 @@ namespace BoomOffline.Helper
                 //Đọc dữ liệu từ UserSetting.Instance.NumOfBots để biết số con bot
                 if (RoomSetting.Instance.MapName != "random_map")
                 {
-                    player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[1, 1].Rect, 1, 1, "PLAYER");
-
-                    int divide = RoomSetting.Instance.MapSize / RoomSetting.Instance.NumOfBot;
-                    for (i = 0; i < RoomSetting.Instance.NumOfBot; i++)
+                    if (MatchStorage.Instance.NeedToLoadDataHere)
                     {
-                        //random position
-                        do
+                        var characterData = MatchStorage.Instance.CharacterData;
+                        player.LoadData(characterData[0]);
+                        for (int index = 1; index < characterData.Length; index++)
                         {
-                            w = rand.Next(3, RoomSetting.Instance.MapSize - 3);
-                            h = rand.Next(divide * i, divide * i + divide);
-                        } while (!mapGenerator.IsValidLocation(h, w));
-
-                        do
-                        {
-                            type = rand.Next(0, 3);
-                        } while (type == RoomSetting.Instance.PlayerType);
-
-                        bots.Add(new Character());
-                        bots[i].Load(type, mapGenerator.Map[h, w].Rect, h, w);
+                            var bot = new Character();
+                            bot.LoadData(characterData[index]);
+                            bots.Add(bot);
+                        }
+                        MatchStorage.Instance.NeedToLoadDataHere = false;
                     }
+                    else
+                    {
+                        player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[1, 1].Rect, 1, 1, "PLAYER");
+
+                        int divide = RoomSetting.Instance.MapSize / RoomSetting.Instance.NumOfBot;
+                        for (i = 0; i < RoomSetting.Instance.NumOfBot; i++)
+                        {
+                            //random position
+                            do
+                            {
+                                w = rand.Next(3, RoomSetting.Instance.MapSize - 3);
+                                h = rand.Next(divide * i, divide * i + divide);
+                            } while (!mapGenerator.IsValidLocation(h, w));
+
+                            do
+                            {
+                                type = rand.Next(0, 3);
+                            } while (type == RoomSetting.Instance.PlayerType);
+
+                            bots.Add(new Character());
+                            bots[i].Load(type, mapGenerator.Map[h, w].Rect, h, w);
+                        }
+                    }   
                 }
                 else
                 {

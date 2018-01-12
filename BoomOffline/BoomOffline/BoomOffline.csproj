@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="Helper\GameResult.cs" />
+    <Compile Include="Helper\MatchStorage.cs" />
     <Compile Include="Helper\MiniMap.cs" />
     <Compile Include="Helper\PathNode.cs" />
     <Compile Include="Entity\BasicEntity.cs" />
@@ -96,6 +97,8 @@
     <Compile Include="Resource\Global.cs" />
     <Compile Include="Resource\ResManager.cs" />
     <Compile Include="SoundManager.cs" />
+    <Compile Include="UI\ConfirmationDialog.cs" />
+    <Compile Include="UI\NotificationDialog.cs" />
     <Compile Include="UI\GameUI.cs" />
     <Compile Include="UI\Match.cs" />
     <Compile Include="UI\Menu.cs" />

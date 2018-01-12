@@ -19,7 +19,15 @@ namespace BoomOffline.Event
             }
         }
 
-        public Queue<GameEvent> queue;
+        public GameEvent NextEvent
+        {
+            get { return nextEvent; }
+            set { nextEvent = value; }
+        }
+
+        private Queue<GameEvent> queue;
+        private GameEvent nextEvent;
+        
 
         private EventQueue()
         {

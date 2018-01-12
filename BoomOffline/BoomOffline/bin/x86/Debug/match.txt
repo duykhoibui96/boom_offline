@@ -1,0 +1,14 @@
+MAP
+map01.txt
+21
+1
+3
+No poscam
+No plus poscam
+CAMERA
+512 335
+CHARACTERS
+player 1 1 1 0 0 3 190
+bot 2 1 4 0 0 0 0
+bot 0 10 13 0 0 0 0
+bot 0 12 11 0 0 0 0

@@ -24,6 +24,7 @@ namespace BoomOffline.Helper
         public int MapSize
         {
             get { return mapSize; }
+            set { mapSize = value; }
         }
 
         public List<int[]>MyBot

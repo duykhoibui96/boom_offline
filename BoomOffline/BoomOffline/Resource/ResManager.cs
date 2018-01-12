@@ -54,6 +54,7 @@ namespace BoomOffline.Resource
         public SoundEffect Click;
 
         public Texture2D Control;
+        public Texture2D Dialog;
 
         public static ResManager Instance
         {
@@ -113,6 +114,7 @@ namespace BoomOffline.Resource
             Click = contentManager.Load<SoundEffect>("click");
 
             Control = contentManager.Load<Texture2D>("control");
+            Dialog = contentManager.Load<Texture2D>("dialog");
 
         }
 

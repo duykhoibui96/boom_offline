@@ -36,7 +36,7 @@ namespace BoomOffline.UI
             var unit = Global.Instance.Unit;
             bool isWin = GameResult.Instance.IsWin;
 
-            playAgain.Load("PLAY AGAIN", (viewPort.Width - unit * 5) / 2, unit * 3, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Match));
+            playAgain.Load("PLAY AGAIN", (viewPort.Width - unit * 5) / 2, unit * 3, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Loading));
             returnRoom.Load("RETURN ROOM", (viewPort.Width - unit * 5) / 2, unit * 4 + unit / 2, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Room));
             mainMenu.Load("MAIN MENU", (viewPort.Width - unit * 5) / 2, unit * 6, new GameEvent(GameEvent.Type.SwitchView, (int)GameUI.ViewType.Menu));
 

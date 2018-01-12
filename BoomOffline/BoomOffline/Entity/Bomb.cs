@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Runtime.CompilerServices;
@@ -64,7 +65,7 @@ namespace BoomOffline.Entity
             var unit = Global.Instance.GameUnit;
             var explosionOffset = unit / 2;
             explosionTexture = ResManager.Instance.Explosion;
-            explosionLevelIncreaseTime = 25;
+            explosionLevelIncreaseTime = 50;
             explosionLevel = 1;
             countDownTime = 3000;
             this.state = BombState.CountDown;
@@ -157,7 +158,7 @@ namespace BoomOffline.Entity
                     explosionLevelIncreaseTime -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
                     if (explosionLevelIncreaseTime <= 0)
                     {
-                        explosionLevelIncreaseTime = 25;
+                        explosionLevelIncreaseTime = 50;
                         explosionLevel++;
                         Explose();
                     }
@@ -227,6 +228,11 @@ namespace BoomOffline.Entity
                     break;
             }
 
+        }
+
+        public void Save(StreamWriter file)
+        {
+            file.WriteLine(i + " " + j);
         }
     }
 }
