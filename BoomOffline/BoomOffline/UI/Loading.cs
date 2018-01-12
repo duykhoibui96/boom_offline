@@ -54,16 +54,19 @@ namespace BoomOffline.UI
                 if (mapData[4] != "No poscam")
                 {
                     var data = mapData[4].Split(' ').Select(curData => Double.Parse(curData)).ToArray();
-                    room.PosCam = new Vector2((float) data[0],(float) data[1]);
+                    room.PosCam = new Vector2((float) data[0], (float) data[1]);
                 }
                 if (mapData[5] != "No plus poscam")
                 {
                     var data = mapData[5].Split(' ').Select(curData => Double.Parse(curData)).ToArray();
-                    room.PlusPosCam = new Vector2((float)data[0], (float)data[1]);
+                    room.PlusPosCam = new Vector2((float) data[0], (float) data[1]);
                 }
 
             }
-            mapGenerator.GenerateMap();
+            else
+            {
+                mapGenerator.GenerateMap();
+            }
             System.Threading.Thread.Sleep(1000);
         }
 
