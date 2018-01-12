@@ -96,8 +96,8 @@ namespace BoomOffline
 
         public void Update(GameTime gametime)
         {
-            var currentMouseState = Input.MouseEvent.Instance.currentMouseState;
-            var previousMouseState = Input.MouseEvent.Instance.previousState;
+            //var currentMouseState = Input.MouseEvent.Instance.currentMouseState;
+            //var previousMouseState = Input.MouseEvent.Instance.previousState;
 
             //if (currentMouseState.LeftButton == ButtonState.Pressed)
             //{

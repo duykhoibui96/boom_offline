@@ -10,6 +10,7 @@ namespace BoomOffline.Helper
     {
         private static RoomSetting instance;
 
+        private bool multiplayerMode;
         public static RoomSetting Instance
         {
             get
@@ -86,6 +87,18 @@ namespace BoomOffline.Helper
             set { plusPosCam = value; }
         }
 
+        public bool MultiplayerMode
+        {
+            get { return multiplayerMode; }
+            set { multiplayerMode = value; }
+        }
+
+        public int Player2Type
+        {
+            get { return player2Type; }
+            set { player2Type = value; }
+        }
+
         private RoomSetting()
         {
             mapName = "map01.txt";
@@ -98,6 +111,7 @@ namespace BoomOffline.Helper
         private int numOfBots;
         private int mapSize;
         private int playerType;
+        private int player2Type;
         private List<int[]> myBot;
         private Vector2 posCam;
         private Vector2 plusPosCam;

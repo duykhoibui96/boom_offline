@@ -118,10 +118,19 @@ namespace BoomOffline.UI
                 }
 
                 gameOperator.Player.Draw(spriteBatch);
-                foreach (var bot in gameOperator.Bots)
+
+                if (gameOperator.IsMultiplayer)
                 {
-                    bot.Draw(spriteBatch);
+                    gameOperator.Player2.Draw(spriteBatch);
                 }
+                else
+                {
+                    foreach (var bot in gameOperator.Bots)
+                    {
+                        bot.Draw(spriteBatch);
+                    }
+                }
+                
                 spriteBatch.End();
 
                 if (gameOperator.MiniMap.IsEnabled)

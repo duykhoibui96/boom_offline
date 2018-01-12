@@ -12,6 +12,8 @@ namespace BoomOffline.Helper
 
         private bool isWin;
 
+        private int winnerPlayer;
+
         public static GameResult Instance
         {
             get
@@ -27,6 +29,12 @@ namespace BoomOffline.Helper
         {
             get { return isWin; }
             set { isWin = value; }
+        }
+
+        public int WinnerPlayer
+        {
+            get { return winnerPlayer; }
+            set { winnerPlayer = value; }
         }
 
         private GameResult()

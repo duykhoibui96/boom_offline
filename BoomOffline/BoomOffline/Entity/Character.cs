@@ -25,6 +25,7 @@ namespace BoomOffline.Entity
         public bool isPlayer;
         public bool isMoving;
         private bool isAlive;
+        private bool isCongratulate;
         private Texture2D sprite;
         private Rectangle curRect;
         private Rectangle newRect;
@@ -101,6 +102,19 @@ namespace BoomOffline.Entity
             set { timeForAgony = value; }
         }
 
+        public bool IsCongratulate
+        {
+            get { return isCongratulate; }
+            set
+            {
+                isCongratulate = value;
+                if (value)
+                {
+                    currentSprite = CONGRATULATION;
+                }
+            }
+        }
+
         public Character()
         {
             sprites = new AnimationSprite[]
@@ -117,15 +131,15 @@ namespace BoomOffline.Entity
         }
 
 
-        public void Load(int playerType, Rectangle rect, int i, int j, bool isPlayer = false)
+        public void Load(int playerType, Rectangle rect, int i, int j, string playerName = null)
         {
-            this.isPlayer = isPlayer;
+            isPlayer = playerName != null;
             if (isPlayer)
             {
                 var unit = Global.Instance.GameUnit;
                 var map = MapGenerator.Instance;
-                playerName = new TextEntity();
-                playerName.Load("YOU", ResManager.Instance.Font_3, new Vector2(rect.X + unit / 2, rect.Y - unit / 2), Color.White, true);
+                this.playerName = new TextEntity();
+                this.playerName.Load(playerName, ResManager.Instance.Font_3, new Vector2(rect.X + unit / 2, rect.Y - unit / 2), Color.White, true);
                 //For camera
                 int map_x = map.StartMapX, map_y = map.StartMapY;
                 max_cam_wid = RoomSetting.Instance.MapSize * unit - (1024 - map_x) + 200;
@@ -196,7 +210,7 @@ namespace BoomOffline.Entity
 
         public void Update(GameTime gameTime)
         {
-            if (isAlive)
+            if (!isCongratulate && isAlive)
             {
                 if (isMoving)
                 {
