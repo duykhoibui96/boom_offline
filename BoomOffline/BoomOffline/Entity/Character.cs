@@ -355,7 +355,7 @@ namespace BoomOffline.Entity
         public void LoadData(string s)
         {
             var data = s.Split(' ');
-            var playerName = data[0] == "player" ? "YOU" : null;
+            var playerName = data[0] == "player" ? "PLAYER" : null;
             var playerTypeSprite = Int32.Parse(data[1]);
             int i = Int32.Parse(data[2]), j = Int32.Parse(data[3]);
             Load(playerTypeSprite, MapGenerator.Instance.Map[i, j].Rect, i, j, playerName);

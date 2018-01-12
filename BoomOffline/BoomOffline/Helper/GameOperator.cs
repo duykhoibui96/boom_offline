@@ -124,28 +124,44 @@ namespace BoomOffline.Helper
                             bots.Add(new Character());
                             bots[i].Load(type, mapGenerator.Map[h, w].Rect, h, w);
                         }
-                    }   
+                    }
                 }
                 else
                 {
-                    for (i = 0; i < RoomSetting.Instance.MapSize; i++)
+                    if (MatchStorage.Instance.NeedToLoadDataHere)
                     {
-                        for (j = 0; j < RoomSetting.Instance.MapSize; j++)
-                            if (mapGenerator.IsValidLocation(i, j))
-                            {
-                                player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[i, j].Rect, i, j,"YOU");
-                                flag = 1;
-                                break;
-                            }
-                        if (flag == 1)
-                            break;
+                        var characterData = MatchStorage.Instance.CharacterData;
+                        player.LoadData(characterData[0]);
+                        for (int index = 1; index < characterData.Length; index++)
+                        {
+                            var bot = new Character();
+                            bot.LoadData(characterData[index]);
+                            bots.Add(bot);
+                        }
+                        MatchStorage.Instance.NeedToLoadDataHere = false;
                     }
-                    bots = RoomSetting.Instance.MyBot.Select(bot =>
+                    else
                     {
-                        var newBot = new Character();
-                        newBot.Load(bot[2], mapGenerator.Map[bot[0], bot[1]].Rect, bot[0], bot[1]);
-                        return newBot;
-                    }).ToList();
+                        for (i = 0; i < RoomSetting.Instance.MapSize; i++)
+                        {
+                            for (j = 0; j < RoomSetting.Instance.MapSize; j++)
+                                if (mapGenerator.IsValidLocation(i, j))
+                                {
+                                    player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[i, j].Rect, i, j, "PLAYER");
+                                    flag = 1;
+                                    break;
+                                }
+                            if (flag == 1)
+                                break;
+                        }
+                        bots = RoomSetting.Instance.MyBot.Select(bot =>
+                        {
+                            var newBot = new Character();
+                            newBot.Load(bot[2], mapGenerator.Map[bot[0], bot[1]].Rect, bot[0], bot[1]);
+                            return newBot;
+                        }).ToList();
+                    }
+
                 }
 
                 astar = new Astar(this);
@@ -172,7 +188,7 @@ namespace BoomOffline.Helper
                     {
                         player_2.IsCongratulate = true;
                     }
-                    
+
                 }
                 else if (!player_2.IsAlive)
                 {
