@@ -98,7 +98,7 @@ namespace BoomOffline.Helper
             //Đọc dữ liệu từ UserSetting.Instance.NumOfBots để biết số con bot
             for (i = 0; i < RoomSetting.Instance.NumOfBot; i++)
             {
-                w = rand.Next(3, RoomSetting.Instance.MapSize - 3);
+                w = rand.Next(3, RoomSetting.Instance.MapSize - 10);
                 h = rand.Next(divide * i, divide * i + divide);
                 type = rand.Next(0, 3);
                 temp[0] = h;
@@ -134,7 +134,7 @@ namespace BoomOffline.Helper
             Console.WriteLine(count);
             while (true)
             {
-                if ((LogicMap[r][c] == TYPE_EMPTY && LogicMap[2][2] == TYPE_EMPTY) || count >= 1000000)
+                if ((LogicMap[r][c] == TYPE_EMPTY && LogicMap[2][2] == TYPE_EMPTY) || count >= 10000000)
                     return;
                 count++;
                 bool key = false;
@@ -186,7 +186,7 @@ namespace BoomOffline.Helper
                             {
                                 LogicMap[r + 2][c] = TYPE_EMPTY;
                                 LogicMap[r + 1][c] = TYPE_EMPTY;
-                                r = r + 1;
+                                r = r + 2;
                             }
                             break;
                         case 4: // Left

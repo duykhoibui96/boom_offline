@@ -65,7 +65,7 @@ namespace BoomOffline.Entity
             var unit = Global.Instance.GameUnit;
             var explosionOffset = unit / 2;
             explosionTexture = ResManager.Instance.Explosion;
-            explosionLevelIncreaseTime = 50;
+            explosionLevelIncreaseTime = 25;
             explosionLevel = 1;
             countDownTime = 3000;
             this.state = BombState.CountDown;
@@ -158,7 +158,7 @@ namespace BoomOffline.Entity
                     explosionLevelIncreaseTime -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
                     if (explosionLevelIncreaseTime <= 0)
                     {
-                        explosionLevelIncreaseTime = 50;
+                        explosionLevelIncreaseTime = 25;
                         explosionLevel++;
                         Explose();
                     }

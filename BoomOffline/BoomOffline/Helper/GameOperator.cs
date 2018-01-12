@@ -133,7 +133,7 @@ namespace BoomOffline.Helper
                         for (j = 0; j < RoomSetting.Instance.MapSize; j++)
                             if (mapGenerator.IsValidLocation(i, j))
                             {
-                                player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[i, j].Rect, i, j);
+                                player.Load(RoomSetting.Instance.PlayerType, mapGenerator.Map[i, j].Rect, i, j,"YOU");
                                 flag = 1;
                                 break;
                             }
@@ -261,11 +261,6 @@ namespace BoomOffline.Helper
 
                     foreach (var b in bots)
                         CheckBotMoving(b);
-
-                    foreach (var bomb in bombs) //Cập nhật trạng thái của quả bom
-                    {
-                        bomb.Update(gameTime);
-                    }
 
 
                     //Kiểm tra nổ lan
@@ -496,11 +491,11 @@ namespace BoomOffline.Helper
                 switch (RoomSetting.Instance.MapSize)
                 {
                     case 21:
-                        return findSafePlace(c, 6);
+                        return findSafePlace(c, 10);
                     case 31:
-                        return findSafePlace(c, 7);
+                        return findSafePlace(c, 11);
                     case 51:
-                        return findSafePlace(c, 8);
+                        return findSafePlace(c, 12);
                 }
 
             }
@@ -509,7 +504,7 @@ namespace BoomOffline.Helper
             int d = rand.Next(1, 3);
             if (distance > d)
             {
-                if (RoomSetting.Instance.MapSize == 21)
+                if (RoomSetting.Instance.MapSize <= 31)
                 {
                     ANode pos = astar.FindPath(this, new Vector2(c.J, c.I), new Vector2(player.J, player.I));
                     if (pos != null)
@@ -581,7 +576,7 @@ namespace BoomOffline.Helper
 
             if (tempI != -1 || tempJ != -1)
             {
-                if (RoomSetting.Instance.MapSize == 21)
+                if (RoomSetting.Instance.MapSize <= 31)
                 {
                     ANode pos = astar.FindPath(this, new Vector2(c.J, c.I), new Vector2(tempJ, tempI));
                     if (pos != null)

@@ -45,10 +45,10 @@ namespace BoomOffline.Helper
                 mapName = value; 
                 switch(mapName)
                 {
-                    case "map01.txt": case "random_map":
+                    case "map01.txt":
                         mapSize = 21;
                         break;
-                    case "map02.txt":
+                    case "map02.txt": case "random_map":
                         mapSize = 31;
                         break;
                     case "map03.txt":
