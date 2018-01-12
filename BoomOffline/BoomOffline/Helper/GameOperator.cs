@@ -306,17 +306,17 @@ namespace BoomOffline.Helper
                 switch (RoomSetting.Instance.MapSize)
                 {
                     case 21:
-                        return findSafePlace(c, 5);
-                    case 31:
                         return findSafePlace(c, 6);
-                    case 51:
+                    case 31:
                         return findSafePlace(c, 7);
+                    case 51:
+                        return findSafePlace(c, 8);
                 }
                 
             }
 
             //khi khoảng cách 2 bên quá xa thì thu hẹp khoảng cách
-            int d = rand.Next(1, 4);
+            int d = rand.Next(1, 3);
             if (distance > d)
             {
                 if (RoomSetting.Instance.MapSize == 21)

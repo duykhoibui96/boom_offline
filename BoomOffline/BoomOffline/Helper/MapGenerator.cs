@@ -90,6 +90,7 @@ namespace BoomOffline.Helper
 
         public void generateRandomMap()
         {
+            RoomSetting.Instance.MyBot = new List<int[]>();
             var mapSize = RoomSetting.Instance.MapSize;
             int[] temp = new int[3];
             int w, h, type, i;
@@ -133,7 +134,7 @@ namespace BoomOffline.Helper
             Console.WriteLine(count);
             while (true)
             {
-                if ((LogicMap[r][c] == TYPE_EMPTY && LogicMap[1][1] == TYPE_EMPTY) || count >= 10000)
+                if ((LogicMap[r][c] == TYPE_EMPTY && LogicMap[2][2] == TYPE_EMPTY) || count >= 1000000)
                     return;
                 count++;
                 bool key = false;
@@ -142,7 +143,7 @@ namespace BoomOffline.Helper
                 // Examine each direction
                 //for (int i = 0; i < randDirs.Length; i++)
                 {
-                    int direction = rand.Next(1, 5);
+                    int direction = rand.Next(1, 4);
 
                     switch (direction)
                     {
