@@ -225,7 +225,8 @@ namespace BoomOffline.Helper
 
         public void GenerateMap()
         {
-            GenerateLogicMap(RoomSetting.Instance.MapName);
+            if (!MatchStorage.Instance.NeedToLoadDataHere)
+                GenerateLogicMap(RoomSetting.Instance.MapName);
             map = new BasicEntity[LogicMap.Length, LogicMap[0].Length];
             var unit = Global.Instance.GameUnit;
             var viewPort = Global.Instance.Graphics.Viewport;

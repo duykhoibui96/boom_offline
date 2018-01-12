@@ -61,12 +61,10 @@ namespace BoomOffline.UI
                     var data = mapData[5].Split(' ').Select(curData => Double.Parse(curData)).ToArray();
                     room.PlusPosCam = new Vector2((float) data[0], (float) data[1]);
                 }
+                
+            }
 
-            }
-            else
-            {
-                mapGenerator.GenerateMap();
-            }
+            mapGenerator.GenerateMap();
             System.Threading.Thread.Sleep(1000);
         }
 
